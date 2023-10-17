@@ -24,7 +24,7 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "Fire",
+                    "name": "ShootGun",
                     "type": "Button",
                     "id": "392d0d47-9f26-43aa-9a43-f607306db2c3",
                     "expectedControlType": "Button",
@@ -182,7 +182,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "KeyboardMouse",
-                    "action": "Fire",
+                    "action": "ShootGun",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -193,7 +193,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
-                    "action": "Fire",
+                    "action": "ShootGun",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },

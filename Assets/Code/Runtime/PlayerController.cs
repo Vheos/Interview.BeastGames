@@ -101,7 +101,7 @@ internal class PlayerController : MonoBehaviour
 	}
 
 
-	private void OnFire(ActionContext context)
+	private void OnShootGun(ActionContext context)
 		=> Debug.Log($"{context.action.name}");
 	private void OnSwitchGun(ActionContext context)
 	{
@@ -130,7 +130,7 @@ internal class PlayerController : MonoBehaviour
 		actions.Move.performed += SetMoveInput;
 		actions.Move.canceled += ResetMoveInput;
 		actions.Look.performed += AccumulateLookInput;
-		actions.Fire.performed += OnFire;
+		actions.ShootGun.performed += OnShootGun;
 		actions.SwitchGun.performed += OnSwitchGun;
 		actions.Enable();
 	}
@@ -140,7 +140,7 @@ internal class PlayerController : MonoBehaviour
 		actions.Move.performed -= SetMoveInput;
 		actions.Move.canceled -= ResetMoveInput;
 		actions.Look.performed -= AccumulateLookInput;
-		actions.Fire.performed -= OnFire;
+		actions.ShootGun.performed -= OnShootGun;
 		actions.SwitchGun.performed -= OnSwitchGun;
 		actions.Disable();
 	}
