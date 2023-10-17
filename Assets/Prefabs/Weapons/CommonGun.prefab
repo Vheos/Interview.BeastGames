@@ -40,6 +40,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8751440509265224674}
+  - component: {fileID: 1255450995905567737}
   - component: {fileID: 4546919858925613767}
   m_Layer: 6
   m_Name: CommonGun
@@ -65,6 +66,18 @@ Transform:
   - {fileID: 1028832212840543395}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1255450995905567737
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5334149795252676824}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f043fcbe86eefe842bfd0d2c422dffa1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &4546919858925613767
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -77,8 +90,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3ed31da2d3e4fa41b6b65e09352a070, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <Grip>k__BackingField: {fileID: 1028832212840543395}
-  <Handle>k__BackingField: {fileID: 9157287201497164871}
+  grip: {fileID: 1028832212840543395}
+  handle: {fileID: 9157287201497164871}
 --- !u!1 &6256661977775139740
 GameObject:
   m_ObjectHideFlags: 0
