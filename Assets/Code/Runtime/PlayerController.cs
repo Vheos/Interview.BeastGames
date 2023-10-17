@@ -103,8 +103,10 @@ internal class PlayerController : MonoBehaviour
 
 	private void OnFire(ActionContext context)
 		=> Debug.Log($"{context.action.name}");
-	private void OnSwitch(ActionContext context)
-		=> Debug.Log($"{context.action.name}");
+	private void OnSwitchGun(ActionContext context)
+	{
+		gunInventory.TrySwitch();
+	}
 
 	private static float ClampAngle(float angle, float min, float max)
 	{
@@ -129,7 +131,7 @@ internal class PlayerController : MonoBehaviour
 		actions.Move.canceled += ResetMoveInput;
 		actions.Look.performed += AccumulateLookInput;
 		actions.Fire.performed += OnFire;
-		actions.Switch.performed += OnSwitch;
+		actions.SwitchGun.performed += OnSwitchGun;
 		actions.Enable();
 	}
 
@@ -139,7 +141,7 @@ internal class PlayerController : MonoBehaviour
 		actions.Move.canceled -= ResetMoveInput;
 		actions.Look.performed -= AccumulateLookInput;
 		actions.Fire.performed -= OnFire;
-		actions.Switch.performed -= OnSwitch;
+		actions.SwitchGun.performed -= OnSwitchGun;
 		actions.Disable();
 	}
 
