@@ -102,7 +102,9 @@ internal class PlayerController : MonoBehaviour
 
 
 	private void OnShootGun(ActionContext context)
-		=> Debug.Log($"{context.action.name}");
+	{
+		gunInventory.TryShoot();
+	}
 	private void OnSwitchGun(ActionContext context)
 	{
 		gunInventory.TrySwitch();
