@@ -9,18 +9,18 @@ using ActionContext = UnityEngine.InputSystem.InputAction.CallbackContext;
 internal class PlayerController : MonoBehaviour
 {
 	// Inspector
-	[Header("Dependencies")]
-	[SerializeField] private CharacterController characterController;
-	[SerializeField] private Transform cameraAnchor;
-	[Header("Move")]
-	[SerializeField, Range(1f, 10f)] private float MaxMoveSpeed = 5f;
-	[SerializeField, Range(0.1f, 1f)] private float MoveAcceleration = 0.5f;
-	[Header("Fall")]
-	[SerializeField, Range(10f, 100f)] private float MaxFallSpeed = 50f;
-	[SerializeField, Range(0.1f, 1f)] private float FallAcceleration = 0.5f;
-	[Header("Look")]
-	[SerializeField] private Vector2 LookSpeed = new(-5f, -4f);
-	[SerializeField, Range(60f, 90f)] private float MaxPitch = 60f;
+	[field: Header("Dependencies")]
+	[field: SerializeField] public CharacterController CharacterController { get; private set; }
+	[field: SerializeField] public Transform CameraAnchor { get; private set; }
+	[field: Header("Move")]
+	[field: SerializeField, Range(1f, 10f)] public float MaxMoveSpeed { get; private set; } = 5f;
+	[field: SerializeField, Range(0.1f, 1f)] public float MoveAcceleration { get; private set; } = 0.5f;
+	[field: Header("Fall")]
+	[field: SerializeField] public float MaxFallSpeed { get; private set; } = 50f;
+	[field: SerializeField] public float FallAcceleration { get; private set; } = 0.5f;
+	[field: Header("Look")]
+	[field: SerializeField] public Vector2 LookSpeed { get; private set; } = new(-5f, -4f);
+	[field: SerializeField] public float MaxPitch { get; private set; } = 60f;
 
 	// Fields
 	private FPSActions.PlayerActions actions;
@@ -41,13 +41,13 @@ internal class PlayerController : MonoBehaviour
 	private void Move()
 	{
 		Vector3 motion = MoveSpeed * MoveDirection + FallSpeed * FallDirection;
-		characterController.Move(motion * Time.deltaTime);
+		CharacterController.Move(motion * Time.deltaTime);
 	}
 	private float MoveSpeed
 	{
 		get
 		{
-			Vector3 horizontalVelocity = new(characterController.velocity.x, 0f, characterController.velocity.z);
+			Vector3 horizontalVelocity = new(CharacterController.velocity.x, 0f, CharacterController.velocity.z);
 			float currentSpeed = horizontalVelocity.magnitude;
 			float acceleration = MoveAcceleration;
 			return Mathf.Min(currentSpeed + acceleration, MaxMoveSpeed);
@@ -65,7 +65,7 @@ internal class PlayerController : MonoBehaviour
 	{
 		get
 		{
-			float currentSpeed = Mathf.Abs(characterController.velocity.y);
+			float currentSpeed = Mathf.Abs(CharacterController.velocity.y);
 			float acceleration = FallAcceleration;
 			return Mathf.Min(currentSpeed + acceleration, MaxFallSpeed);
 		}
@@ -77,7 +77,7 @@ internal class PlayerController : MonoBehaviour
 	private void Look()
 	{
 		transform.localRotation = Quaternion.Euler(0f, LookYaw, 0f);
-		cameraAnchor.localRotation = Quaternion.Euler(LookPitch, 0f, 0f);
+		CameraAnchor.localRotation = Quaternion.Euler(LookPitch, 0f, 0f);
 		ResetLookInput();
 	}
 	private float LookYaw
@@ -93,7 +93,7 @@ internal class PlayerController : MonoBehaviour
 	{
 		get
 		{
-			float currentAngle = cameraAnchor.localEulerAngles.x;
+			float currentAngle = CameraAnchor.localEulerAngles.x;
 			float offsetAngle = lookInput.y * LookSpeed.y * Time.deltaTime;
 			return ClampAngle(currentAngle + offsetAngle, -MaxPitch, +MaxPitch);
 		}

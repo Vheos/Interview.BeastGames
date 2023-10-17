@@ -4,11 +4,17 @@ using UnityEngine;
 
 public class SnapToTransform : MonoBehaviour
 {
-	[SerializeField] private Transform Target;
+	[field: SerializeField] public Transform Target { get; private set; }
+
+	public void SnapPosition()
+		=> transform.position = Target.position;
+
+	public void SnapRotation()
+		=> transform.rotation = Target.rotation;
 
 	void Update()
 	{
-		transform.position = Target.position;
-		transform.rotation = Target.rotation;
+		SnapPosition();
+		SnapRotation();
 	}
 }
