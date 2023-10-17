@@ -1,5 +1,6 @@
 _<details><summary>Original README</summary>_
 Zadanie testowe
+
 Wykonaj poniższe założenia gry typu First Person Shooter:
 - Na scenie powinno znajdować się 5 obiektów do zniszczenia (np beczka, hydrant, etc.) oraz
 gracz,
@@ -22,6 +23,27 @@ zadanie testowe,
 rozszerzalnego systemu,
 - Zadanie testowe powinno zostać wysłane jako pełny projekt wykonany w Unity3D w wersji
 2021.3.5f1, prosimy również umieścić w projekcie informacje na temat sterowania.
+  
 Wykonane zadanie prosimy wysłać na adres e-mail: praca@beastgamesofficial.com
+
 Beast Games S.A.
 </details>
+
+- [x] Unity 2021.3.5f1
+- [ ] klasyczny FPS
+  - [x] testowa scena
+    > zaimportowana z szablonu `First Person`, materiały podmienione na `Default-Material`
+  - [ ] kontrola postaci
+  - [ ] kontrola kamery
+  - [ ] strzał
+  - [ ] zmiana broni
+- [ ] informacja o sterowaniu
+- [ ] 5 zniszczalnych obiektów (np. beczka, hydrant) z atrybutami:
+  - [ ] wytrzymałość
+  - [ ] materiał (np. żelazo, plastik, drewno)
+- [ ] 3 bronie z atrubytami:
+  - [ ] zdawane obrażenia
+  - [ ] materiały, na które działa
+- [ ] event na zniszczenie obiektu
+- [ ] rozszerzalne rozwiązania
+- [ ] opcjonalnie: szata graficzna (animacje, particle)
