@@ -10,6 +10,6 @@ public class CursorSettings : MonoBehaviour
 	private void Start()
 	{
 		Cursor.lockState = mode;
-		Cursor.visible = false;
+		Cursor.visible = visible;
 	}
 }
