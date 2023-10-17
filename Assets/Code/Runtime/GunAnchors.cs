@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class GunAnchors : MonoBehaviour
 {
-    [field: SerializeField] public Transform Grip { get; private set; }
-	[field: SerializeField] public Transform Handle { get; private set; }
+	[SerializeField] private Transform grip;
+	[SerializeField] private Transform handle;
+
+	public Vector3 Grip
+		=> grip.position;
+	public Vector3 Handle
+		=> handle.position;
 }

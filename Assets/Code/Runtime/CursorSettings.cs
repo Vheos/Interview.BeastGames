@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class CursorSettings : MonoBehaviour
 {
-	[field: SerializeField] public CursorLockMode Mode { get; private set; } = CursorLockMode.Locked;
-	[field: SerializeField] public bool Visible { get; private set; } = false;
+	[SerializeField] private CursorLockMode mode = CursorLockMode.Locked;
+	[SerializeField] private bool visible = false;
 
-	void Start()
-    {
-		Cursor.lockState = Mode;
+	private void Start()
+	{
+		Cursor.lockState = mode;
 		Cursor.visible = false;
-    }
+	}
 }
