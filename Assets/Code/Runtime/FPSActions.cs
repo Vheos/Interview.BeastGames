@@ -55,7 +55,7 @@ public partial class @FPSActions: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Switch"",
+                    ""name"": ""SwitchGun"",
                     ""type"": ""Button"",
                     ""id"": ""e103ad2d-7386-4623-8e55-264fd307ad7e"",
                     ""expectedControlType"": ""Button"",
@@ -226,7 +226,7 @@ public partial class @FPSActions: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""KeyboardMouse"",
-                    ""action"": ""Switch"",
+                    ""action"": ""SwitchGun"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -237,7 +237,7 @@ public partial class @FPSActions: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
-                    ""action"": ""Switch"",
+                    ""action"": ""SwitchGun"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -299,7 +299,7 @@ public partial class @FPSActions: IInputActionCollection2, IDisposable
         m_Player_Move = m_Player.FindAction("Move", throwIfNotFound: true);
         m_Player_Look = m_Player.FindAction("Look", throwIfNotFound: true);
         m_Player_Fire = m_Player.FindAction("Fire", throwIfNotFound: true);
-        m_Player_Switch = m_Player.FindAction("Switch", throwIfNotFound: true);
+        m_Player_SwitchGun = m_Player.FindAction("SwitchGun", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -364,7 +364,7 @@ public partial class @FPSActions: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Move;
     private readonly InputAction m_Player_Look;
     private readonly InputAction m_Player_Fire;
-    private readonly InputAction m_Player_Switch;
+    private readonly InputAction m_Player_SwitchGun;
     public struct PlayerActions
     {
         private @FPSActions m_Wrapper;
@@ -372,7 +372,7 @@ public partial class @FPSActions: IInputActionCollection2, IDisposable
         public InputAction @Move => m_Wrapper.m_Player_Move;
         public InputAction @Look => m_Wrapper.m_Player_Look;
         public InputAction @Fire => m_Wrapper.m_Player_Fire;
-        public InputAction @Switch => m_Wrapper.m_Player_Switch;
+        public InputAction @SwitchGun => m_Wrapper.m_Player_SwitchGun;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -391,9 +391,9 @@ public partial class @FPSActions: IInputActionCollection2, IDisposable
             @Fire.started += instance.OnFire;
             @Fire.performed += instance.OnFire;
             @Fire.canceled += instance.OnFire;
-            @Switch.started += instance.OnSwitch;
-            @Switch.performed += instance.OnSwitch;
-            @Switch.canceled += instance.OnSwitch;
+            @SwitchGun.started += instance.OnSwitchGun;
+            @SwitchGun.performed += instance.OnSwitchGun;
+            @SwitchGun.canceled += instance.OnSwitchGun;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -407,9 +407,9 @@ public partial class @FPSActions: IInputActionCollection2, IDisposable
             @Fire.started -= instance.OnFire;
             @Fire.performed -= instance.OnFire;
             @Fire.canceled -= instance.OnFire;
-            @Switch.started -= instance.OnSwitch;
-            @Switch.performed -= instance.OnSwitch;
-            @Switch.canceled -= instance.OnSwitch;
+            @SwitchGun.started -= instance.OnSwitchGun;
+            @SwitchGun.performed -= instance.OnSwitchGun;
+            @SwitchGun.canceled -= instance.OnSwitchGun;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -468,6 +468,6 @@ public partial class @FPSActions: IInputActionCollection2, IDisposable
         void OnMove(InputAction.CallbackContext context);
         void OnLook(InputAction.CallbackContext context);
         void OnFire(InputAction.CallbackContext context);
-        void OnSwitch(InputAction.CallbackContext context);
+        void OnSwitchGun(InputAction.CallbackContext context);
     }
 }
