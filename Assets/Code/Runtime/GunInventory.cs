@@ -3,33 +3,35 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using UnityEngine.Events;
 
 public class GunInventory : MonoBehaviour
 {
 	public SwitchGun.Event OnSwitchGun;
+	public ShootGun.Event OnShootGun;
 
 	private List<Gun> guns;
 	private Gun currentGun;
 
 	public IReadOnlyList<Gun> Guns
 		=> guns;
-
-	public bool TryEquip(Gun newGun)
+	public Gun CurrentGun
 	{
-		if (currentGun == newGun)
-			return false;
+		get => currentGun;
+		set
+		{
+			if (currentGun == value)
+				return;
 
-		Gun previousGun = currentGun;
-		if (previousGun != null)
-			previousGun.gameObject.SetActive(false);
+			Gun previousGun = currentGun;
+			if (previousGun != null)
+				previousGun.gameObject.SetActive(false);
 
-		currentGun = newGun;
-		if (currentGun != null)
-			currentGun.gameObject.SetActive(true);
+			currentGun = value;
+			if (currentGun != null)
+				currentGun.gameObject.SetActive(true);
 
-		OnSwitchGun?.Invoke(new(previousGun, currentGun));
-		return true;
+			OnSwitchGun?.Invoke(new(previousGun, currentGun));
+		}
 	}
 
 	public bool TrySwitch()
@@ -39,15 +41,25 @@ public class GunInventory : MonoBehaviour
 
 		int currentIndex = guns.IndexOf(currentGun);
 		int nextIndex = (currentIndex + 1) % guns.Count;
-		Gun nextGun = guns[nextIndex];
-		TryEquip(nextGun);
+		CurrentGun = guns[nextIndex];
+		return true;
+	}
+	public bool TryShoot()
+	{
+		if (currentGun == null)
+			return false;
+
+		if (currentGun.TryShoot())
+			OnShootGun.Invoke(new(currentGun));
+
 		return true;
 	}
 
 	private void Awake()
 	{
 		guns = new List<Gun>(GetComponentsInChildren<Gun>(true));
-		TryEquip(guns.FirstOrDefault());
+		guns.ForEach(gun => gun.gameObject.SetActive(false));
+		CurrentGun = guns.FirstOrDefault();
 	}
 }
 
