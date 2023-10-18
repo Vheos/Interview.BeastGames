@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class Destructible : MonoBehaviour
@@ -7,7 +8,41 @@ public class Destructible : MonoBehaviour
 	[SerializeField] private DestructibleAttributes attributes;
 	[Header(Headers.Events)]
 	[SerializeField] private OnGetShot.Event onGetShot;
+	[SerializeField] private OnChangeHealth.Event onChangeHealth;
 
-	public void InvokeOnGetShot(Bullet bullet, Collision collision)
-		=> onGetShot.Invoke(new(this, bullet, collision));
+	private float health;
+	public float Health
+	{
+		get => health;
+		set
+		{
+			if (value == health)
+				return;
+
+			float previous = health;
+			health = value;
+			onChangeHealth.Invoke(new(this, previous, health));
+
+			if (health <= 0f)
+				Die();
+		}
+	}
+
+	private void Die()
+	{
+		Destroy(gameObject);
+	}
+
+	public void OnGetShot(Bullet bullet, Collision collision)
+	{
+		float damage = bullet.Gun.Attributes.GetDamageDealtTo(attributes.Armor);
+		Health -= damage;
+
+		onGetShot.Invoke(new(this, bullet, collision));
+	}
+
+	private void Awake()
+	{
+		health = attributes.MaxHealth;
+	}
 }
