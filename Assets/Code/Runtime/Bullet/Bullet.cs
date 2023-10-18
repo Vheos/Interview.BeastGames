@@ -2,8 +2,11 @@
 
 public class Bullet : MonoBehaviour
 {
+	// Inspector
+	[Header(Headers.Dependencies)]
 	[SerializeField] private BulletAttributes attributes;
 	[SerializeField] private Rigidbody rigidBody;
+	[Header(Headers.Events)]
 	[SerializeField] private OnHit.Event OnHit;
 
 	public BulletAttributes Attributes

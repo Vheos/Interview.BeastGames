@@ -4,7 +4,10 @@ using UnityEngine;
 
 public class Destructible : MonoBehaviour
 {
+	// Inspector
+	[Header(Headers.Dependencies)]
 	[SerializeField] private DestructibleAttributes attributes;
+	[Header(Headers.Events)]
 	[SerializeField] private OnGetShot.Event onGetShot;
 
 	public void InvokeOnGetShot(Bullet bullet, Collision collision)

@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class GunInventory : MonoBehaviour
 {
+	// Inspector
+	[Header(Headers.Events)]
 	[SerializeField] private OnAddRemoveGun.Event OnAddGun;
 	[SerializeField] private OnAddRemoveGun.Event OnRemoveGun;
 	[SerializeField] private OnSwitchGun.Event OnSwitchGun;
