@@ -1,8 +1,8 @@
 ﻿public enum ArmorType
 {
-	Wooden,
+	Plant,
+	Wood,
 	Stone,
-	Plastic,
 	Metal,
-	Organic,
+	Crystal,
 }
