@@ -12,7 +12,7 @@ public class SnapToTransform : MonoBehaviour
 	public void SnapRotation()
 		=> transform.rotation = Target.rotation;
 
-	void Update()
+	void LateUpdate()
 	{
 		SnapPosition();
 		SnapRotation();
