@@ -3,6 +3,8 @@
 public class Bullet : MonoBehaviour
 {
 	[SerializeField] private BulletAttributes attributes;
+	[SerializeField] private Rigidbody rigidBody;
+	[SerializeField] private OnHit.Event OnHit;
 
 	public BulletAttributes Attributes
 		=> attributes;
@@ -28,23 +30,26 @@ public class Bullet : MonoBehaviour
 		Destroy(gameObject);
 		return true;
 	}
-	private void Move()
-		=> transform.position += attributes.Speed * Time.deltaTime * transform.forward;
-	private void CheckCollision()
-	{
-		// TODO
-	}
 
 	private void Start()
 	{
 		UpdateDestroyTime();
+		rigidBody.AddForce(attributes.Speed * 100f * transform.forward);
 	}
 	private void Update()
 	{
 		if (CheckDestroy())
 			return;
+	}
 
-		Move();
-		CheckCollision();
+	private void OnCollisionEnter(Collision collision)
+	{
+		OnHit.Invoke(new(this, collision));
+
+		if ((Layer)collision.gameObject.layer == Layer.Destructible
+		&& collision.collider.TryGetInParents(out Destructible destructible))
+		{
+			destructible.InvokeOnGetShot(this, collision);
+		}
 	}
 }
