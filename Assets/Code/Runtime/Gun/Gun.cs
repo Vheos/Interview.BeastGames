@@ -6,13 +6,17 @@ public class Gun : MonoBehaviour
 	[SerializeField] private GunAnchors anchors;
 	[SerializeField] private Bullet bulletPrefab;
 
+	public GunAttributes Attributes
+		=> attributes;
+	public GunAnchors Anchors
+		=> anchors;
+
 	public void ApplyGripOffset()
-		=> transform.localPosition = -anchors.GripLocal;
+		=> transform.localPosition = -anchors.Grip.localPosition;
 
 	public bool TryShoot()
 	{
-		Bullet bullet = Instantiate(bulletPrefab, anchors.MuzzleWorld, Quaternion.identity);
-
+		Bullet.Spawn(bulletPrefab, this);
 		return true;
 	}
 
