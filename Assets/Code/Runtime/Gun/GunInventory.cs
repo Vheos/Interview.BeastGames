@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class GunInventory : MonoBehaviour
 {
+	public AddGun.Event OnAddGun;
+	public RemoveGun.Event OnRemoveGun;
 	public SwitchGun.Event OnSwitchGun;
 	public ShootGun.Event OnShootGun;
 
@@ -12,6 +14,7 @@ public class GunInventory : MonoBehaviour
 
 	public IReadOnlyList<Gun> Guns
 		=> guns;
+
 	public Gun CurrentGun
 	{
 		get => currentGun;
@@ -32,7 +35,23 @@ public class GunInventory : MonoBehaviour
 		}
 	}
 
-	public bool TrySwitch()
+	public void Add(Gun gun)
+	{
+		gun.transform.parent = transform;
+		gun.gameObject.SetActive(false);
+		guns.Add(gun);
+		OnAddGun.Invoke(new(gun));
+	}
+	public bool TryRemove(Gun gun)
+	{
+		if (!guns.Remove(gun) || gun == currentGun)
+			return false;
+
+		gun.transform.parent = null;
+		OnRemoveGun.Invoke(new(gun));
+		return true;
+	}
+	public bool TrySwitchToNext()
 	{
 		if (guns.Count < 2)
 			return false;
@@ -55,8 +74,11 @@ public class GunInventory : MonoBehaviour
 
 	private void Awake()
 	{
-		guns = new List<Gun>(GetComponentsInChildren<Gun>(true));
-		guns.ForEach(gun => gun.gameObject.SetActive(false));
+		guns = new List<Gun>();
+
+		foreach (var childGun in GetComponentsInChildren<Gun>(true))
+			Add(childGun);
+
 		CurrentGun = guns.FirstOrDefault();
 	}
 }
