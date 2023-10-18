@@ -5,7 +5,7 @@ using ActionContext = UnityEngine.InputSystem.InputAction.CallbackContext;
 internal class PlayerController : MonoBehaviour
 {
 	// Inspector
-	[Header("Dependencies")]
+	[Header(Headers.Dependencies)]
 	[SerializeField] private CharacterController characterController;
 	[SerializeField] private Transform cameraAnchor;
 	[SerializeField] private GunInventory gunInventory;

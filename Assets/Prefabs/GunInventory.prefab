@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3433850629244392201}
   - component: {fileID: 6780789103021963011}
+  - component: {fileID: 4290004159870250307}
   m_Layer: 0
   m_Name: GunInventory
   m_TagString: Untagged
@@ -47,12 +48,42 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1f9343ee00ac7d429104c4f5c8485da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnAddGun:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 11400000, guid: c72d01d789c25054fbfda7d66c961374, type: 2}
+        m_TargetAssemblyTypeName: UnityEventLogger, Vheos.Interview.BeastGames
+        m_MethodName: Log
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnRemoveGun:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 11400000, guid: c72d01d789c25054fbfda7d66c961374, type: 2}
+        m_TargetAssemblyTypeName: UnityEventLogger, Vheos.Interview.BeastGames
+        m_MethodName: Log
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnSwitchGun:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1171802209645375180, guid: a868770b5341bc34982d4b50ed047a06, type: 3}
-        m_TargetAssemblyTypeName: UnityEventTester, Vheos.Interview.BeastGames
-        m_MethodName: NotifyOnSwitchGun
+      - m_Target: {fileID: 11400000, guid: c72d01d789c25054fbfda7d66c961374, type: 2}
+        m_TargetAssemblyTypeName: UnityEventLogger, Vheos.Interview.BeastGames
+        m_MethodName: Log
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -62,21 +93,19 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  OnShootGun:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1171802209645375180, guid: a868770b5341bc34982d4b50ed047a06, type: 3}
-        m_TargetAssemblyTypeName: UnityEventTester, Vheos.Interview.BeastGames
-        m_MethodName: NotifyOnShootGun
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+--- !u!114 &4290004159870250307
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8968292843982792984}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5c52c194cd248b419cfb17d76c3c654, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <Target>k__BackingField: {fileID: 0}
 --- !u!1001 &5578148336707759329
 PrefabInstance:
   m_ObjectHideFlags: 0
