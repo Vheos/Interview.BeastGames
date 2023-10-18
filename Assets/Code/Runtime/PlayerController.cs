@@ -92,7 +92,7 @@ internal class PlayerController : MonoBehaviour
 		{
 			float currentAngle = cameraAnchor.localEulerAngles.x;
 			float offsetAngle = lookInput.y * lookSpeed.y * Time.deltaTime;
-			return ClampAngle(currentAngle + offsetAngle, -maxPitch, +maxPitch);
+			return Helpers.ClampAngle(currentAngle + offsetAngle, -maxPitch, +maxPitch);
 		}
 	}
 
@@ -105,18 +105,6 @@ internal class PlayerController : MonoBehaviour
 	{
 		gunInventory.TrySwitchToNext();
 	}
-
-	private static float ClampAngle(float angle, float min, float max)
-	{
-		float c = 360f;
-		if (angle <= -c / 2f)
-			angle += c;
-		if (angle >= c / 2f)
-			angle += -c;
-
-		return Mathf.Clamp(angle, min, max);
-	}
-
 
 	private void Awake()
 	{
