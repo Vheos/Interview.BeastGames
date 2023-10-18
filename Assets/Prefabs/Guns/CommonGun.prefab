@@ -75,7 +75,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 5334149795252676824}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f043fcbe86eefe842bfd0d2c422dffa1, type: 3}
+  m_Script: {fileID: 11500000, guid: 37d78cc1b004f8141aa35c99468e4eca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &4546919858925613767
@@ -87,11 +87,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 5334149795252676824}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a3ed31da2d3e4fa41b6b65e09352a070, type: 3}
+  m_Script: {fileID: 11500000, guid: 54e2fc927926e8b4292e088f607aa91c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   grip: {fileID: 1028832212840543395}
-  handle: {fileID: 9157287201497164871}
+  muzzle: {fileID: 0}
 --- !u!1 &6256661977775139740
 GameObject:
   m_ObjectHideFlags: 0
