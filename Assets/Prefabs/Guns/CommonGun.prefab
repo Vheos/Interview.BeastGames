@@ -86,8 +86,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 11400000, guid: c72d01d789c25054fbfda7d66c961374, type: 2}
-        m_TargetAssemblyTypeName: UnityEventTester, Vheos.Interview.BeastGames
-        m_MethodName: NotifyOnShootGun
+        m_TargetAssemblyTypeName: UnityEventLogger, Vheos.Interview.BeastGames
+        m_MethodName: Log
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -110,7 +110,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 5
-  overrideDamageModifiers: []
+  damageModifiers: []
   fallbackDamageModifier: 0
 --- !u!114 &4546919858925613767
 MonoBehaviour:

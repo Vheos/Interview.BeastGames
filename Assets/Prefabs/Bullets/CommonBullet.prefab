@@ -52,8 +52,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 11400000, guid: c72d01d789c25054fbfda7d66c961374, type: 2}
-        m_TargetAssemblyTypeName: UnityEventTester, Vheos.Interview.BeastGames
-        m_MethodName: NotifyOnHit
+        m_TargetAssemblyTypeName: UnityEventLogger, Vheos.Interview.BeastGames
+        m_MethodName: Log
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
