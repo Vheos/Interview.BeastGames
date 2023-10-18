@@ -17,4 +17,10 @@ public static class Helpers
 		=> new(a.x * b.x, a.y * b.y, a.z * b.z);
 	public static Vector3 Div(this Vector3 a, Vector3 b)
 		=> new(a.x / b.x, a.y / b.y, a.z / b.z);
+
+	public static bool TryGetInParents<T>(this Component @this, out T @out) where T : Component
+	{
+		@out = @this.GetComponentInParent<T>(true);
+		return @out != null;
+	}
 }
