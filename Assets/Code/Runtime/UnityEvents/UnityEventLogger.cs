@@ -5,32 +5,19 @@ using UnityEngine;
 [CreateAssetMenu(fileName = nameof(UnityEventLogger), menuName = nameof(UnityEventLogger))]
 public class UnityEventLogger : ScriptableObject
 {
-	private const string Prefix = "EVENT: ";
-
 	private string NameOrNull(Object obj)
 		=> obj != null ? obj.name : "null";
 
-	public void NotifyOnAddRemoveGun(OnAddRemoveGun.Data data)
-		=> Debug.Log($"{Prefix}{nameof(OnAddRemoveGun)}\n" +
-			$"\t{nameof(data.Gun)}: {NameOrNull(data.Gun)}");
-
-	public void NotifyOnSwitchGun(OnSwitchGun.Data data)
-		=> Debug.Log($"{Prefix}{nameof(OnSwitchGun)}\n" +
-			$"\t{nameof(data.From)}: {NameOrNull(data.From)}\n" +
-			$"\t{nameof(data.To)}: {NameOrNull(data.To)}");
-
-	public void NotifyOnShootGun(OnShoot.Data data)
-		=> Debug.Log($"{Prefix}{nameof(OnShoot)}\n" +
-			$"\t{nameof(data.Gun)}: {NameOrNull(data.Gun)}\n" +
-			$"\t{nameof(data.Bullet)}: {NameOrNull(data.Bullet)}");
-
-	public void NotifyOnHit(OnHit.Data data)
-		=> Debug.Log($"{Prefix}{nameof(OnHit)}\n" +
-			$"\t{nameof(data.Bullet)}: {NameOrNull(data.Bullet)}\n" +
-			$"\t{nameof(data.Collider)}: {NameOrNull(data.Collider)}");
-
-	public void NotifyOnGetShot(OnGetShot.Data data)
-		=> Debug.Log($"{Prefix}{nameof(OnGetShot)}\n" +
-			$"\t{nameof(data.Destructible)}: {NameOrNull(data.Destructible)}\n" +
-			$"\t{nameof(data.Bullet)}: {NameOrNull(data.Bullet)}");
+	public void Log(OnAddRemoveGun.Data data)
+		=> Debug.Log($"{data.Inventory.name}.{nameof(OnAddRemoveGun)}:   {NameOrNull(data.Gun)}");
+	public void Log(OnSwitchGun.Data data)
+		=> Debug.Log($"{data.Inventory.name}.{nameof(OnSwitchGun)}:   {NameOrNull(data.From)}   ->   {NameOrNull(data.To)}");
+	public void Log(OnShoot.Data data)
+		=> Debug.Log($"{data.Gun.name}.{nameof(OnShoot)}:   {NameOrNull(data.Bullet)}");
+	public void Log(OnHit.Data data)
+		=> Debug.Log($"{data.Bullet.name}.{nameof(OnHit)}:   {NameOrNull(data.Collider)}");
+	public void Log(OnGetShot.Data data)
+		=> Debug.Log($"{data.Destructible.name}.{nameof(OnGetShot)}:   {NameOrNull(data.Bullet)}");
+	public void Log(OnChangeHealth.Data data)
+		=> Debug.Log($"{data.Destructible.name}.{nameof(OnSwitchGun)}:   {data.From:F1}   ->   {data.To:F1}");
 }
