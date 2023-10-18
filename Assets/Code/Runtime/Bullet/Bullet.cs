@@ -52,7 +52,7 @@ public class Bullet : MonoBehaviour
 		if ((Layer)collision.gameObject.layer == Layer.Destructible
 		&& collision.collider.TryGetInParents(out Destructible destructible))
 		{
-			destructible.InvokeOnGetShot(this, collision);
+			destructible.OnGetShot(this, collision);
 		}
 	}
 }
