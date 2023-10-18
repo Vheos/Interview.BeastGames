@@ -4,10 +4,9 @@ using UnityEngine;
 
 public class GunInventory : MonoBehaviour
 {
-	public AddGun.Event OnAddGun;
-	public RemoveGun.Event OnRemoveGun;
-	public SwitchGun.Event OnSwitchGun;
-	public ShootGun.Event OnShootGun;
+	[SerializeField] private OnAddRemoveGun.Event OnAddGun;
+	[SerializeField] private OnAddRemoveGun.Event OnRemoveGun;
+	[SerializeField] private OnSwitchGun.Event OnSwitchGun;
 
 	private List<Gun> guns;
 	private Gun currentGun;
@@ -31,7 +30,7 @@ public class GunInventory : MonoBehaviour
 			if (currentGun != null)
 				currentGun.gameObject.SetActive(true);
 
-			OnSwitchGun?.Invoke(new(previousGun, currentGun));
+			OnSwitchGun?.Invoke(new(this, previousGun, currentGun));
 		}
 	}
 
@@ -40,7 +39,7 @@ public class GunInventory : MonoBehaviour
 		gun.transform.parent = transform;
 		gun.gameObject.SetActive(false);
 		guns.Add(gun);
-		OnAddGun.Invoke(new(gun));
+		OnAddGun.Invoke(new(this, gun));
 	}
 	public bool TryRemove(Gun gun)
 	{
@@ -48,7 +47,7 @@ public class GunInventory : MonoBehaviour
 			return false;
 
 		gun.transform.parent = null;
-		OnRemoveGun.Invoke(new(gun));
+		OnRemoveGun.Invoke(new(this, gun));
 		return true;
 	}
 	public bool TrySwitchToNext()
@@ -62,15 +61,7 @@ public class GunInventory : MonoBehaviour
 		return true;
 	}
 	public bool TryShoot()
-	{
-		if (currentGun == null)
-			return false;
-
-		if (currentGun.TryShoot())
-			OnShootGun.Invoke(new(currentGun));
-
-		return true;
-	}
+		=> currentGun != null && currentGun.TryShoot();
 
 	private void Awake()
 	{

@@ -6,6 +6,8 @@ public class Gun : MonoBehaviour
 	[SerializeField] private GunAnchors anchors;
 	[SerializeField] private Bullet bulletPrefab;
 
+	[SerializeField] private OnShoot.Event OnShoot;
+
 	public GunAttributes Attributes
 		=> attributes;
 	public GunAnchors Anchors
@@ -16,7 +18,9 @@ public class Gun : MonoBehaviour
 
 	public bool TryShoot()
 	{
-		Bullet.Spawn(bulletPrefab, this);
+		Bullet newBullet = Bullet.Spawn(bulletPrefab, this);
+
+		OnShoot.Invoke(new(this, newBullet));
 		return true;
 	}
 
