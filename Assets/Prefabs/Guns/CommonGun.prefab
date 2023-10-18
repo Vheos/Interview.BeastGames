@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1028832212840543395}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: Grip
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -43,7 +43,7 @@ GameObject:
   - component: {fileID: 1255450995905567737}
   - component: {fileID: -3455033526120757433}
   - component: {fileID: 4546919858925613767}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: CommonGun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -82,6 +82,21 @@ MonoBehaviour:
   attributes: {fileID: -3455033526120757433}
   anchors: {fileID: 4546919858925613767}
   bulletPrefab: {fileID: 1242604820513720009, guid: c2c5ff8bdebe4964f87d0ec481e87c2e, type: 3}
+  OnShoot:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1171802209645375180, guid: a868770b5341bc34982d4b50ed047a06, type: 3}
+        m_TargetAssemblyTypeName: UnityEventTester, Vheos.Interview.BeastGames
+        m_MethodName: NotifyOnShootGun
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &-3455033526120757433
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -120,7 +135,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9157287201497164871}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: Muzzle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
