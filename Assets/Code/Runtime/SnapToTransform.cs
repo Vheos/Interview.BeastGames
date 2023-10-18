@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class SnapToTransform : MonoBehaviour
@@ -12,7 +10,7 @@ public class SnapToTransform : MonoBehaviour
 	public void SnapRotation()
 		=> transform.rotation = Target.rotation;
 
-	void LateUpdate()
+	private void LateUpdate()
 	{
 		SnapPosition();
 		SnapRotation();
