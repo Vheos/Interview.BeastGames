@@ -35,7 +35,7 @@ public class Destructible : MonoBehaviour
 
 	public void OnGetShot(Bullet bullet, Collision collision)
 	{
-		float damage = bullet.Gun.Attributes.GetDamageDealtTo(attributes.Armor);
+		float damage = bullet.Gun.Attributes.GetDamageDealtTo(attributes.ArmorType);
 		Health -= damage;
 
 		onGetShot.Invoke(new(this, bullet, collision));
