@@ -103,7 +103,7 @@ internal class PlayerController : MonoBehaviour
 	}
 	private void OnSwitchGun(ActionContext context)
 	{
-		gunInventory.TrySwitch();
+		gunInventory.TrySwitchToNext();
 	}
 
 	private static float ClampAngle(float angle, float min, float max)
