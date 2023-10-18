@@ -49,7 +49,7 @@ MonoBehaviour:
   onGetShot:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1171802209645375180, guid: a868770b5341bc34982d4b50ed047a06, type: 3}
+      - m_Target: {fileID: 11400000, guid: c72d01d789c25054fbfda7d66c961374, type: 2}
         m_TargetAssemblyTypeName: UnityEventTester, Vheos.Interview.BeastGames
         m_MethodName: NotifyOnGetShot
         m_Mode: 0

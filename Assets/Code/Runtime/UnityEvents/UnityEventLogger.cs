@@ -1,6 +1,9 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
-public class UnityEventTester : MonoBehaviour
+[CreateAssetMenu(fileName = nameof(UnityEventLogger), menuName = nameof(UnityEventLogger))]
+public class UnityEventLogger : ScriptableObject
 {
 	private const string Prefix = "EVENT: ";
 
