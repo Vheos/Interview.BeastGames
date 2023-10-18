@@ -16,6 +16,10 @@ PrefabInstance:
       propertyPath: armor
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 3640529845531224817, guid: 21e7bb6584ecb224fac230e8a3933530, type: 3}
+      propertyPath: armorType
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 6829211846240913440, guid: 21e7bb6584ecb224fac230e8a3933530, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
