@@ -2,6 +2,8 @@ using UnityEngine;
 
 public static class Helpers
 {
+
+
 	public static float ClampAngle(float angle, float min, float max)
 	{
 		float c = 360f;
