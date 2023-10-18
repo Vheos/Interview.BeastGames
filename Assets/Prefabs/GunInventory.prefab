@@ -1,0 +1,181 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &8968292843982792984
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3433850629244392201}
+  - component: {fileID: 6780789103021963011}
+  m_Layer: 0
+  m_Name: GunInventory
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3433850629244392201
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8968292843982792984}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 2475709395237496401}
+  - {fileID: 291610348449421248}
+  - {fileID: 1529801061970054994}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6780789103021963011
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8968292843982792984}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1f9343ee00ac7d429104c4f5c8485da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnSwitchGun:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1171802209645375180, guid: a868770b5341bc34982d4b50ed047a06, type: 3}
+        m_TargetAssemblyTypeName: UnityEventTester, Vheos.Interview.BeastGames
+        m_MethodName: NotifyOnSwitchGun
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnShootGun:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1171802209645375180, guid: a868770b5341bc34982d4b50ed047a06, type: 3}
+        m_TargetAssemblyTypeName: UnityEventTester, Vheos.Interview.BeastGames
+        m_MethodName: NotifyOnShootGun
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!1001 &5578148336707759329
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 3433850629244392201}
+    m_Modifications:
+    - target: {fileID: 6364538099604349875, guid: 745ba7af14b1f3345a0db65fbcdb1831, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6364538099604349875, guid: 745ba7af14b1f3345a0db65fbcdb1831, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6364538099604349875, guid: 745ba7af14b1f3345a0db65fbcdb1831, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7721009874773928073, guid: 745ba7af14b1f3345a0db65fbcdb1831, type: 3}
+      propertyPath: m_Name
+      value: Crossbow
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 745ba7af14b1f3345a0db65fbcdb1831, type: 3}
+--- !u!4 &1529801061970054994 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6364538099604349875, guid: 745ba7af14b1f3345a0db65fbcdb1831, type: 3}
+  m_PrefabInstance: {fileID: 5578148336707759329}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &6656148448053343347
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 3433850629244392201}
+    m_Modifications:
+    - target: {fileID: 6364538099604349875, guid: 96b7ea89b096f574fabfb10a35da8887, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6364538099604349875, guid: 96b7ea89b096f574fabfb10a35da8887, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6364538099604349875, guid: 96b7ea89b096f574fabfb10a35da8887, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7721009874773928073, guid: 96b7ea89b096f574fabfb10a35da8887, type: 3}
+      propertyPath: m_Name
+      value: Shotgun
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 96b7ea89b096f574fabfb10a35da8887, type: 3}
+--- !u!4 &291610348449421248 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6364538099604349875, guid: 96b7ea89b096f574fabfb10a35da8887, type: 3}
+  m_PrefabInstance: {fileID: 6656148448053343347}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &8793310423297361378
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 3433850629244392201}
+    m_Modifications:
+    - target: {fileID: 6364538099604349875, guid: 45e559b0a08f8e54fab171f830157823, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6364538099604349875, guid: 45e559b0a08f8e54fab171f830157823, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6364538099604349875, guid: 45e559b0a08f8e54fab171f830157823, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7721009874773928073, guid: 45e559b0a08f8e54fab171f830157823, type: 3}
+      propertyPath: m_Name
+      value: Blaster
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 45e559b0a08f8e54fab171f830157823, type: 3}
+--- !u!4 &2475709395237496401 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6364538099604349875, guid: 45e559b0a08f8e54fab171f830157823, type: 3}
+  m_PrefabInstance: {fileID: 8793310423297361378}
+  m_PrefabAsset: {fileID: 0}

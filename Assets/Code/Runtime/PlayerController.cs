@@ -1,8 +1,4 @@
-using System;
 using UnityEngine;
-using UnityEngine.InputSystem;
-using UnityEngine.UIElements;
-using UnityEngine.Windows;
 using ActionContext = UnityEngine.InputSystem.InputAction.CallbackContext;
 
 
@@ -12,15 +8,16 @@ internal class PlayerController : MonoBehaviour
 	[Header("Dependencies")]
 	[SerializeField] private CharacterController characterController;
 	[SerializeField] private Transform cameraAnchor;
+	[SerializeField] private GunInventory gunInventory;
 	[Header("Move")]
-	[SerializeField, Range(1f, 10f)] private float MaxMoveSpeed = 5f;
-	[SerializeField, Range(0.1f, 1f)] private float MoveAcceleration = 0.5f;
+	[SerializeField] private float maxMoveSpeed = 5f;
+	[SerializeField] private float moveAcceleration = 0.5f;
 	[Header("Fall")]
-	[SerializeField, Range(10f, 100f)] private float MaxFallSpeed = 50f;
-	[SerializeField, Range(0.1f, 1f)] private float FallAcceleration = 0.5f;
+	[SerializeField] private float maxFallSpeed = 50f;
+	[SerializeField] private float fallAcceleration = 0.5f;
 	[Header("Look")]
-	[SerializeField] private Vector2 LookSpeed = new(-5f, -4f);
-	[SerializeField, Range(60f, 90f)] private float MaxPitch = 60f;
+	[SerializeField] private Vector2 lookSpeed = new(+5f, -4f);
+	[SerializeField] private float maxPitch = 60f;
 
 	// Fields
 	private FPSActions.PlayerActions actions;
@@ -49,8 +46,8 @@ internal class PlayerController : MonoBehaviour
 		{
 			Vector3 horizontalVelocity = new(characterController.velocity.x, 0f, characterController.velocity.z);
 			float currentSpeed = horizontalVelocity.magnitude;
-			float acceleration = MoveAcceleration;
-			return Mathf.Min(currentSpeed + acceleration, MaxMoveSpeed);
+			float acceleration = moveAcceleration;
+			return Mathf.Min(currentSpeed + acceleration, maxMoveSpeed);
 		}
 	}
 	private Vector3 MoveDirection
@@ -66,8 +63,8 @@ internal class PlayerController : MonoBehaviour
 		get
 		{
 			float currentSpeed = Mathf.Abs(characterController.velocity.y);
-			float acceleration = FallAcceleration;
-			return Mathf.Min(currentSpeed + acceleration, MaxFallSpeed);
+			float acceleration = fallAcceleration;
+			return Mathf.Min(currentSpeed + acceleration, maxFallSpeed);
 		}
 	}
 	private Vector3 FallDirection
@@ -85,7 +82,7 @@ internal class PlayerController : MonoBehaviour
 		get
 		{
 			float currentAngle = transform.localEulerAngles.y;
-			float offsetAngle = lookInput.x * LookSpeed.x * Time.deltaTime;
+			float offsetAngle = lookInput.x * lookSpeed.x * Time.deltaTime;
 			return currentAngle + offsetAngle;
 		}
 	}
@@ -94,28 +91,20 @@ internal class PlayerController : MonoBehaviour
 		get
 		{
 			float currentAngle = cameraAnchor.localEulerAngles.x;
-			float offsetAngle = lookInput.y * LookSpeed.y * Time.deltaTime;
-			return ClampAngle(currentAngle + offsetAngle, -MaxPitch, +MaxPitch);
+			float offsetAngle = lookInput.y * lookSpeed.y * Time.deltaTime;
+			return Helpers.ClampAngle(currentAngle + offsetAngle, -maxPitch, +maxPitch);
 		}
 	}
 
 
-	private void OnFire(ActionContext context)
-		=> Debug.Log($"{context.action.name}");
-	private void OnSwitch(ActionContext context)
-		=> Debug.Log($"{context.action.name}");
-
-	private static float ClampAngle(float angle, float min, float max)
+	private void OnShootGun(ActionContext context)
 	{
-		float c = 360f;
-		if (angle <= -c / 2f)
-			angle += c;
-		if (angle >= c / 2f)
-			angle += -c;
-
-		return Mathf.Clamp(angle, min, max);
+		gunInventory.TryShoot();
 	}
-
+	private void OnSwitchGun(ActionContext context)
+	{
+		gunInventory.TrySwitchToNext();
+	}
 
 	private void Awake()
 	{
@@ -127,8 +116,8 @@ internal class PlayerController : MonoBehaviour
 		actions.Move.performed += SetMoveInput;
 		actions.Move.canceled += ResetMoveInput;
 		actions.Look.performed += AccumulateLookInput;
-		actions.Fire.performed += OnFire;
-		actions.Switch.performed += OnSwitch;
+		actions.ShootGun.performed += OnShootGun;
+		actions.SwitchGun.performed += OnSwitchGun;
 		actions.Enable();
 	}
 
@@ -137,8 +126,8 @@ internal class PlayerController : MonoBehaviour
 		actions.Move.performed -= SetMoveInput;
 		actions.Move.canceled -= ResetMoveInput;
 		actions.Look.performed -= AccumulateLookInput;
-		actions.Fire.performed -= OnFire;
-		actions.Switch.performed -= OnSwitch;
+		actions.ShootGun.performed -= OnShootGun;
+		actions.SwitchGun.performed -= OnSwitchGun;
 		actions.Disable();
 	}
 

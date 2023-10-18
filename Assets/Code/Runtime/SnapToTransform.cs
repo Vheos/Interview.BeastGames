@@ -1,14 +1,18 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class SnapToTransform : MonoBehaviour
 {
-	[SerializeField] private Transform Target;
+	[field: SerializeField] public Transform Target { get; private set; }
 
-	void Update()
+	public void SnapPosition()
+		=> transform.position = Target.position;
+
+	public void SnapRotation()
+		=> transform.rotation = Target.rotation;
+
+	private void LateUpdate()
 	{
-		transform.position = Target.position;
-		transform.rotation = Target.rotation;
+		SnapPosition();
+		SnapRotation();
 	}
 }
