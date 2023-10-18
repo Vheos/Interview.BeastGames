@@ -41,6 +41,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8751440509265224674}
   - component: {fileID: 1255450995905567737}
+  - component: {fileID: -3455033526120757433}
   - component: {fileID: 4546919858925613767}
   m_Layer: 6
   m_Name: CommonGun
@@ -78,6 +79,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37d78cc1b004f8141aa35c99468e4eca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  attributes: {fileID: -3455033526120757433}
+  anchors: {fileID: 4546919858925613767}
+  bulletPrefab: {fileID: 1242604820513720009, guid: c2c5ff8bdebe4964f87d0ec481e87c2e, type: 3}
+--- !u!114 &-3455033526120757433
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5334149795252676824}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d23d90c7be6bfd46ab242f5c03eb681, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 5
+  overrideDamageModifiers: []
+  fallbackDamageModifier: 0
 --- !u!114 &4546919858925613767
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -91,7 +110,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   grip: {fileID: 1028832212840543395}
-  muzzle: {fileID: 0}
+  muzzle: {fileID: 9157287201497164871}
 --- !u!1 &6256661977775139740
 GameObject:
   m_ObjectHideFlags: 0

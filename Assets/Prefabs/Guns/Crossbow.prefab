@@ -130,13 +130,25 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -3455033526120757433, guid: 0b890386bbbf7104aade2b41a7f6b5db, type: 3}
+      propertyPath: overrideDamageModifiers.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -3455033526120757433, guid: 0b890386bbbf7104aade2b41a7f6b5db, type: 3}
+      propertyPath: overrideDamageModifiers.Array.data[0].<Armor>k__BackingField
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -3455033526120757433, guid: 0b890386bbbf7104aade2b41a7f6b5db, type: 3}
+      propertyPath: overrideDamageModifiers.Array.data[0].<Multiplier>k__BackingField
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1028832212840543395, guid: 0b890386bbbf7104aade2b41a7f6b5db, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.171
+      value: -0.088
       objectReference: {fileID: 0}
     - target: {fileID: 1028832212840543395, guid: 0b890386bbbf7104aade2b41a7f6b5db, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.848
+      value: -0.624
       objectReference: {fileID: 0}
     - target: {fileID: 5334149795252676824, guid: 0b890386bbbf7104aade2b41a7f6b5db, type: 3}
       propertyPath: m_Name
