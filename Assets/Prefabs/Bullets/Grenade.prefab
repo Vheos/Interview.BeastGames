@@ -81,118 +81,62 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -279638353600922151, guid: c2c5ff8bdebe4964f87d0ec481e87c2e, type: 3}
       propertyPath: dealDamageOnHit
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1188830928918256443, guid: c2c5ff8bdebe4964f87d0ec481e87c2e, type: 3}
       propertyPath: m_Name
       value: Grenade
       objectReference: {fileID: 0}
     - target: {fileID: 1242604820513720009, guid: c2c5ff8bdebe4964f87d0ec481e87c2e, type: 3}
-      propertyPath: OnHit.m_PersistentCalls.m_Calls.Array.size
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1242604820513720009, guid: c2c5ff8bdebe4964f87d0ec481e87c2e, type: 3}
       propertyPath: OnSpawn.m_PersistentCalls.m_Calls.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1242604820513720009, guid: c2c5ff8bdebe4964f87d0ec481e87c2e, type: 3}
       propertyPath: OnDespawn.m_PersistentCalls.m_Calls.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1242604820513720009, guid: c2c5ff8bdebe4964f87d0ec481e87c2e, type: 3}
-      propertyPath: OnHit.m_PersistentCalls.m_Calls.Array.data[1].m_Target
-      value: 
-      objectReference: {fileID: 11400000, guid: c72d01d789c25054fbfda7d66c961374, type: 2}
+      propertyPath: OnSpawn.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1242604820513720009, guid: c2c5ff8bdebe4964f87d0ec481e87c2e, type: 3}
-      propertyPath: OnSpawn.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 3760045308040085337}
+      propertyPath: OnDespawn.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1242604820513720009, guid: c2c5ff8bdebe4964f87d0ec481e87c2e, type: 3}
       propertyPath: OnSpawn.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
-      objectReference: {fileID: 11400000, guid: c72d01d789c25054fbfda7d66c961374, type: 2}
-    - target: {fileID: 1242604820513720009, guid: c2c5ff8bdebe4964f87d0ec481e87c2e, type: 3}
-      propertyPath: OnHit.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1242604820513720009, guid: c2c5ff8bdebe4964f87d0ec481e87c2e, type: 3}
-      propertyPath: OnDespawn.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 3760045308040085337}
+      objectReference: {fileID: 11400000, guid: 3cbacb12d5d981e49b91dbcff638541d, type: 2}
     - target: {fileID: 1242604820513720009, guid: c2c5ff8bdebe4964f87d0ec481e87c2e, type: 3}
       propertyPath: OnDespawn.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
-      objectReference: {fileID: 11400000, guid: c72d01d789c25054fbfda7d66c961374, type: 2}
-    - target: {fileID: 1242604820513720009, guid: c2c5ff8bdebe4964f87d0ec481e87c2e, type: 3}
-      propertyPath: OnHit.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: Log
-      objectReference: {fileID: 0}
-    - target: {fileID: 1242604820513720009, guid: c2c5ff8bdebe4964f87d0ec481e87c2e, type: 3}
-      propertyPath: OnSpawn.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 3760045308040085337}
     - target: {fileID: 1242604820513720009, guid: c2c5ff8bdebe4964f87d0ec481e87c2e, type: 3}
       propertyPath: OnSpawn.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1242604820513720009, guid: c2c5ff8bdebe4964f87d0ec481e87c2e, type: 3}
-      propertyPath: OnSpawn.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: RandomizeRotation
-      objectReference: {fileID: 0}
-    - target: {fileID: 1242604820513720009, guid: c2c5ff8bdebe4964f87d0ec481e87c2e, type: 3}
       propertyPath: OnSpawn.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: Log
-      objectReference: {fileID: 0}
-    - target: {fileID: 1242604820513720009, guid: c2c5ff8bdebe4964f87d0ec481e87c2e, type: 3}
-      propertyPath: OnDespawn.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
+      value: RandomizeRotation
       objectReference: {fileID: 0}
     - target: {fileID: 1242604820513720009, guid: c2c5ff8bdebe4964f87d0ec481e87c2e, type: 3}
       propertyPath: OnDespawn.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1242604820513720009, guid: c2c5ff8bdebe4964f87d0ec481e87c2e, type: 3}
-      propertyPath: OnDespawn.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      propertyPath: OnDespawn.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
       value: HandleExplosion
       objectReference: {fileID: 0}
     - target: {fileID: 1242604820513720009, guid: c2c5ff8bdebe4964f87d0ec481e87c2e, type: 3}
-      propertyPath: OnDespawn.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: Log
-      objectReference: {fileID: 0}
-    - target: {fileID: 1242604820513720009, guid: c2c5ff8bdebe4964f87d0ec481e87c2e, type: 3}
-      propertyPath: OnHit.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
-      value: UnityEventLogger, Vheos.Interview.BeastGames
-      objectReference: {fileID: 0}
-    - target: {fileID: 1242604820513720009, guid: c2c5ff8bdebe4964f87d0ec481e87c2e, type: 3}
-      propertyPath: OnSpawn.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: GrenadeBehaviour, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 1242604820513720009, guid: c2c5ff8bdebe4964f87d0ec481e87c2e, type: 3}
       propertyPath: OnSpawn.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
-      value: UnityEventLogger, Vheos.Interview.BeastGames
-      objectReference: {fileID: 0}
-    - target: {fileID: 1242604820513720009, guid: c2c5ff8bdebe4964f87d0ec481e87c2e, type: 3}
-      propertyPath: OnDespawn.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: GrenadeBehaviour, Assembly-CSharp
+      value: CommonBulletBehaviour, Vheos.Interview.BeastGames
       objectReference: {fileID: 0}
     - target: {fileID: 1242604820513720009, guid: c2c5ff8bdebe4964f87d0ec481e87c2e, type: 3}
       propertyPath: OnDespawn.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
-      value: UnityEventLogger, Vheos.Interview.BeastGames
-      objectReference: {fileID: 0}
-    - target: {fileID: 1242604820513720009, guid: c2c5ff8bdebe4964f87d0ec481e87c2e, type: 3}
-      propertyPath: OnHit.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
-    - target: {fileID: 1242604820513720009, guid: c2c5ff8bdebe4964f87d0ec481e87c2e, type: 3}
-      propertyPath: OnSpawn.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
+      value: GrenadeAttributes, Vheos.Interview.BeastGames
       objectReference: {fileID: 0}
     - target: {fileID: 1242604820513720009, guid: c2c5ff8bdebe4964f87d0ec481e87c2e, type: 3}
       propertyPath: OnSpawn.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
-    - target: {fileID: 1242604820513720009, guid: c2c5ff8bdebe4964f87d0ec481e87c2e, type: 3}
-      propertyPath: OnDespawn.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 1242604820513720009, guid: c2c5ff8bdebe4964f87d0ec481e87c2e, type: 3}
