@@ -1367,6 +1367,14 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2668958849209042480, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
+      propertyPath: lookSpeed.x
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2668958849209042480, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
+      propertyPath: lookSpeed.y
+      value: -4
+      objectReference: {fileID: 0}
     - target: {fileID: 3671823405757855899, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -1557,6 +1565,10 @@ PrefabInstance:
     - target: {fileID: 1379662863861220933, guid: 1915c963d258d004f943399707c3c3bb, type: 3}
       propertyPath: m_CullingMask.m_Bits
       value: 823
+      objectReference: {fileID: 0}
+    - target: {fileID: 3714939246379859342, guid: 1915c963d258d004f943399707c3c3bb, type: 3}
+      propertyPath: m_TagString
+      value: MainCamera
       objectReference: {fileID: 0}
     - target: {fileID: 4513714262885301425, guid: 1915c963d258d004f943399707c3c3bb, type: 3}
       propertyPath: <Target>k__BackingField
