@@ -12,3 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79af42fd7e4ac744f96ef23344c6efd2, type: 3}
   m_Name: UnityEventLogger
   m_EditorClassIdentifier: 
+  enableEventLogs: 1
+  logType: 3

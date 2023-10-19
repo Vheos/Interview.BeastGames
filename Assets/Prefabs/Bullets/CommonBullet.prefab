@@ -48,7 +48,37 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attributes: {fileID: -279638353600922151}
   rigidBody: {fileID: 3808825647656198678}
+  OnSpawn:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 11400000, guid: c72d01d789c25054fbfda7d66c961374, type: 2}
+        m_TargetAssemblyTypeName: UnityEventLogger, Vheos.Interview.BeastGames
+        m_MethodName: Log
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnHit:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 11400000, guid: c72d01d789c25054fbfda7d66c961374, type: 2}
+        m_TargetAssemblyTypeName: UnityEventLogger, Vheos.Interview.BeastGames
+        m_MethodName: Log
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnDespawn:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 11400000, guid: c72d01d789c25054fbfda7d66c961374, type: 2}
@@ -75,7 +105,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be58e9f0dc02b954280ca6646ff751eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 50
+  force: 10
   lifetime: 5
 --- !u!54 &3808825647656198678
 Rigidbody:
