@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.Events;
 
 
-public static class OnGetShot
+public static class OnGetHit
 {
 	[Serializable]
 	public class Event : UnityEvent<Data>
