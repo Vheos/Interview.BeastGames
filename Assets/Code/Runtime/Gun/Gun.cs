@@ -20,6 +20,8 @@ public class Gun : MonoBehaviour
 
 	public bool TryShoot()
 	{
+		Vector3 muzzlePoint = GetNearMuzzlePoint(Camera.main);
+
 		OnShoot.Invoke(new(this));
 
 		for (int i = 0; i < attributes.BulletCount; i++)
@@ -42,6 +44,13 @@ public class Gun : MonoBehaviour
 		=> GetDamageModifierFor(destructible.Attributes.ArmorType);
 	public float GetDamageDealtTo(Destructible destructible)
 		=> GetDamageDealtTo(destructible.Attributes.ArmorType);
+	public Vector3 GetNearMuzzlePoint(Camera playerCamera)
+	{
+		Vector3 worldPosition = anchors.Muzzle.transform.position;
+		Vector3 screenPosition = playerCamera.WorldToScreenPoint(worldPosition);
+		screenPosition.z = playerCamera.nearClipPlane * 2;
+		return playerCamera.ScreenToWorldPoint(screenPosition);
+	}
 
 	private void Awake()
 	{
