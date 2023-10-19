@@ -1,6 +1,4 @@
 using DG.Tweening;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = nameof(CommonBulletBehaviour), menuName = nameof(CommonBulletBehaviour))]
@@ -14,5 +12,4 @@ public class CommonBulletBehaviour : ScriptableObject
 		data.Destructible.transform.DOKill(true);
 		data.Destructible.transform.DOShakeScale(0.5f, 0.25f);
 	}
-
 }

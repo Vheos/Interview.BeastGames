@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 public class Destructible : MonoBehaviour
@@ -6,6 +5,7 @@ public class Destructible : MonoBehaviour
 	// Inspector
 	[Header(Headers.Dependencies)]
 	[SerializeField] private DestructibleAttributes attributes;
+
 	[Header(Headers.Events)]
 	[SerializeField] private OnGetShot.Event onGetShot;
 	[SerializeField] private OnChangeHealth.Event onChangeHealth;
@@ -50,6 +50,4 @@ public class Destructible : MonoBehaviour
 	{
 		health = attributes.MaxHealth;
 	}
-
-
 }
