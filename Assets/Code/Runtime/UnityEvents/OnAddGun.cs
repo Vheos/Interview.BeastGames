@@ -2,7 +2,7 @@ using System;
 using UnityEngine.Events;
 
 
-public static class OnAddRemoveGun
+public static class OnAddGun
 {
 	[Serializable]
 	public class Event : UnityEvent<Data>
