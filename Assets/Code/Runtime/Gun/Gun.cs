@@ -15,18 +15,20 @@ public class Gun : MonoBehaviour
 	public GunAnchors Anchors
 		=> anchors;
 
-	public void ApplyGripOffset()
+	private void ApplyGripOffset()
 		=> transform.localPosition = -anchors.Grip.localPosition;
 
 	public bool TryShoot()
 	{
-		Bullet newBullet = Bullet.Spawn(bulletPrefab, this);
+		OnShoot.Invoke(new(this));
 
-		OnShoot.Invoke(new(this, newBullet));
+		for (int i = 0; i < attributes.BulletCount; i++)
+			Bullet.Spawn(bulletPrefab, this);
+
 		return true;
 	}
 
-	private void Start()
+	private void Awake()
 	{
 		ApplyGripOffset();
 	}
