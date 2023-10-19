@@ -28,6 +28,21 @@ public class Gun : MonoBehaviour
 		return true;
 	}
 
+	public float GetDamageModifierFor(ArmorType armorType)
+	{
+		foreach (var damageModifier in attributes.DamageModifiers)
+			if (damageModifier.ArmorType == armorType)
+				return damageModifier.Multiplier;
+
+		return attributes.FallbackDamageModifier;
+	}
+	public float GetDamageDealtTo(ArmorType armorType)
+		=> attributes.Damage * GetDamageModifierFor(armorType);
+	public float GetDamageModifierFor(Destructible destructible)
+		=> GetDamageModifierFor(destructible.Attributes.ArmorType);
+	public float GetDamageDealtTo(Destructible destructible)
+		=> GetDamageDealtTo(destructible.Attributes.ArmorType);
+
 	private void Awake()
 	{
 		ApplyGripOffset();
