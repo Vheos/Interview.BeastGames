@@ -13,12 +13,12 @@ public class GrenadeBehaviour : MonoBehaviour
 	public void HandleExplosion(OnDespawnBullet.Data data)
 	{
 		Vector3 position = data.Bullet.transform.position;
-		int layerMask = LayerMask.GetMask(nameof(Layer.Destructible));
+		int layerMask = Layer.Destructible.ToLayerMask();
 		Physics.OverlapSphereNonAlloc(position, explosionRadius, hits, layerMask);
 
 		foreach (var hit in hits)
-			if (hit != null && hit.TryGetInParents(out Destructible destructible))
-				destructible.TakeDamageFrom(data.Bullet.Gun);
+			if (hit != null && hit.TryGetInSelfOrParents(out Destructible destructible))
+				destructible.GetHitBy(data.Bullet);
 	}
 
 	private void Awake()
