@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GrenadeAttributes : MonoBehaviour
+public class GrenadeBehaviour : MonoBehaviour
 {
 	[SerializeField, Range(0f, 10)] private float explosionRadius = 5f;
 	[SerializeField, Range(1, 50)] private int maxHits = 5;
