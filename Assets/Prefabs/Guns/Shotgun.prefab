@@ -236,7 +236,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -3455033526120757433, guid: 0b890386bbbf7104aade2b41a7f6b5db, type: 3}
       propertyPath: recoil
-      value: 10
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: -3455033526120757433, guid: 0b890386bbbf7104aade2b41a7f6b5db, type: 3}
+      propertyPath: baseDamage
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -3455033526120757433, guid: 0b890386bbbf7104aade2b41a7f6b5db, type: 3}
       propertyPath: bulletCount
@@ -245,10 +249,6 @@ PrefabInstance:
     - target: {fileID: -3455033526120757433, guid: 0b890386bbbf7104aade2b41a7f6b5db, type: 3}
       propertyPath: bulletSpread
       value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: -3455033526120757433, guid: 0b890386bbbf7104aade2b41a7f6b5db, type: 3}
-      propertyPath: fallbackDamageModifier
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -3455033526120757433, guid: 0b890386bbbf7104aade2b41a7f6b5db, type: 3}
       propertyPath: damageModifiers.Array.size
@@ -272,7 +272,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -3455033526120757433, guid: 0b890386bbbf7104aade2b41a7f6b5db, type: 3}
       propertyPath: damageModifiers.Array.data[1].<Multiplier>k__BackingField
-      value: 0.25
+      value: 0.33333334
       objectReference: {fileID: 0}
     - target: {fileID: -3455033526120757433, guid: 0b890386bbbf7104aade2b41a7f6b5db, type: 3}
       propertyPath: overrideDamageModifiers.Array.data[0].<Armor>k__BackingField
@@ -281,6 +281,18 @@ PrefabInstance:
     - target: {fileID: -3455033526120757433, guid: 0b890386bbbf7104aade2b41a7f6b5db, type: 3}
       propertyPath: overrideDamageModifiers.Array.data[0].<Multiplier>k__BackingField
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 721124105281147810, guid: 0b890386bbbf7104aade2b41a7f6b5db, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 721124105281147810, guid: 0b890386bbbf7104aade2b41a7f6b5db, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 721124105281147810, guid: 0b890386bbbf7104aade2b41a7f6b5db, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.15
       objectReference: {fileID: 0}
     - target: {fileID: 1028832212840543395, guid: 0b890386bbbf7104aade2b41a7f6b5db, type: 3}
       propertyPath: m_LocalPosition.y
@@ -294,9 +306,49 @@ PrefabInstance:
       propertyPath: bulletPrefab
       value: 
       objectReference: {fileID: 3027600126878360118, guid: 64a14801e415e4348b09143d4d7c7a37, type: 3}
+    - target: {fileID: 3083736857444926780, guid: 0b890386bbbf7104aade2b41a7f6b5db, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: e7e80d39e3e102147a3be13caa7cd3d7, type: 3}
+    - target: {fileID: 3083736857444926780, guid: 0b890386bbbf7104aade2b41a7f6b5db, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5334149795252676824, guid: 0b890386bbbf7104aade2b41a7f6b5db, type: 3}
       propertyPath: m_Name
       value: Shotgun
+      objectReference: {fileID: 0}
+    - target: {fileID: 6990157378576619638, guid: 0b890386bbbf7104aade2b41a7f6b5db, type: 3}
+      propertyPath: simulationSpeed
+      value: 0.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 6990157378576619638, guid: 0b890386bbbf7104aade2b41a7f6b5db, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.g
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6990438533812197584, guid: 0b890386bbbf7104aade2b41a7f6b5db, type: 3}
+      propertyPath: simulationSpeed
+      value: 0.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 7191409956180863288, guid: 0b890386bbbf7104aade2b41a7f6b5db, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 7191409956180863288, guid: 0b890386bbbf7104aade2b41a7f6b5db, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 7191409956180863288, guid: 0b890386bbbf7104aade2b41a7f6b5db, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 7191409956180863288, guid: 0b890386bbbf7104aade2b41a7f6b5db, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.156
+      objectReference: {fileID: 0}
+    - target: {fileID: 7191409956180863288, guid: 0b890386bbbf7104aade2b41a7f6b5db, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1.417
       objectReference: {fileID: 0}
     - target: {fileID: 8751440509265224674, guid: 0b890386bbbf7104aade2b41a7f6b5db, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x

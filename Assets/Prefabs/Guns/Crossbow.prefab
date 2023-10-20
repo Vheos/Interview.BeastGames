@@ -160,7 +160,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -3455033526120757433, guid: 0b890386bbbf7104aade2b41a7f6b5db, type: 3}
       propertyPath: recoil
-      value: 3
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -3455033526120757433, guid: 0b890386bbbf7104aade2b41a7f6b5db, type: 3}
+      propertyPath: baseDamage
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: -3455033526120757433, guid: 0b890386bbbf7104aade2b41a7f6b5db, type: 3}
       propertyPath: bulletPrefab
@@ -192,7 +196,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -3455033526120757433, guid: 0b890386bbbf7104aade2b41a7f6b5db, type: 3}
       propertyPath: damageModifiers.Array.data[1].<Multiplier>k__BackingField
-      value: 0.25
+      value: 0.33333334
       objectReference: {fileID: 0}
     - target: {fileID: -3455033526120757433, guid: 0b890386bbbf7104aade2b41a7f6b5db, type: 3}
       propertyPath: overrideDamageModifiers.Array.data[0].<Armor>k__BackingField
@@ -214,6 +218,14 @@ PrefabInstance:
       propertyPath: bulletPrefab
       value: 
       objectReference: {fileID: 355489985959237658, guid: 0f840954cd21ba64ebc735787382c608, type: 3}
+    - target: {fileID: 3083736857444926780, guid: 0b890386bbbf7104aade2b41a7f6b5db, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 8c89ed5746a4faa48bb97701cc2f2e35, type: 3}
+    - target: {fileID: 3083736857444926780, guid: 0b890386bbbf7104aade2b41a7f6b5db, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5334149795252676824, guid: 0b890386bbbf7104aade2b41a7f6b5db, type: 3}
       propertyPath: m_Name
       value: Crossbow
@@ -241,6 +253,14 @@ PrefabInstance:
     - target: {fileID: 7191409956180863288, guid: 0b890386bbbf7104aade2b41a7f6b5db, type: 3}
       propertyPath: m_LocalScale.z
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7191409956180863288, guid: 0b890386bbbf7104aade2b41a7f6b5db, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.212
+      objectReference: {fileID: 0}
+    - target: {fileID: 7191409956180863288, guid: 0b890386bbbf7104aade2b41a7f6b5db, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1.391
       objectReference: {fileID: 0}
     - target: {fileID: 8751440509265224674, guid: 0b890386bbbf7104aade2b41a7f6b5db, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
