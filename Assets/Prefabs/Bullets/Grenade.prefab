@@ -76,6 +76,10 @@ PrefabInstance:
       value: 100
       objectReference: {fileID: 0}
     - target: {fileID: -279638353600922151, guid: c2c5ff8bdebe4964f87d0ec481e87c2e, type: 3}
+      propertyPath: maxTime
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -279638353600922151, guid: c2c5ff8bdebe4964f87d0ec481e87c2e, type: 3}
       propertyPath: lifetime
       value: 2
       objectReference: {fileID: 0}
@@ -85,6 +89,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -279638353600922151, guid: c2c5ff8bdebe4964f87d0ec481e87c2e, type: 3}
       propertyPath: dealDamageOnHit
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -279638353600922151, guid: c2c5ff8bdebe4964f87d0ec481e87c2e, type: 3}
+      propertyPath: dealDamageOnCollision
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1188830928918256443, guid: c2c5ff8bdebe4964f87d0ec481e87c2e, type: 3}
@@ -129,7 +137,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1242604820513720009, guid: c2c5ff8bdebe4964f87d0ec481e87c2e, type: 3}
       propertyPath: OnDespawn.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: HandleExplosion
+      value: Explode
       objectReference: {fileID: 0}
     - target: {fileID: 1242604820513720009, guid: c2c5ff8bdebe4964f87d0ec481e87c2e, type: 3}
       propertyPath: OnSpawn.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
@@ -137,7 +145,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1242604820513720009, guid: c2c5ff8bdebe4964f87d0ec481e87c2e, type: 3}
       propertyPath: OnDespawn.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
-      value: GrenadeAttributes, Vheos.Interview.BeastGames
+      value: GrenadeBehaviour, Vheos.Interview.BeastGames
       objectReference: {fileID: 0}
     - target: {fileID: 1242604820513720009, guid: c2c5ff8bdebe4964f87d0ec481e87c2e, type: 3}
       propertyPath: OnSpawn.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
@@ -343,6 +351,46 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400014, guid: 72e388bcbb7b0d04caff9ab498663cb1, type: 3}
       propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 72e388bcbb7b0d04caff9ab498663cb1, type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 72e388bcbb7b0d04caff9ab498663cb1, type: 3}
+      propertyPath: m_ReceiveShadows
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2300002, guid: 72e388bcbb7b0d04caff9ab498663cb1, type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2300002, guid: 72e388bcbb7b0d04caff9ab498663cb1, type: 3}
+      propertyPath: m_ReceiveShadows
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2300004, guid: 72e388bcbb7b0d04caff9ab498663cb1, type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2300004, guid: 72e388bcbb7b0d04caff9ab498663cb1, type: 3}
+      propertyPath: m_ReceiveShadows
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2300006, guid: 72e388bcbb7b0d04caff9ab498663cb1, type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2300006, guid: 72e388bcbb7b0d04caff9ab498663cb1, type: 3}
+      propertyPath: m_ReceiveShadows
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2300008, guid: 72e388bcbb7b0d04caff9ab498663cb1, type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2300008, guid: 72e388bcbb7b0d04caff9ab498663cb1, type: 3}
+      propertyPath: m_ReceiveShadows
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
