@@ -3,11 +3,13 @@
 public class BulletAttributes : MonoBehaviour
 {
 	// Inspector
+	[Header(Headers.Prefabs)]
+	[SerializeField] private HitParticle hitParticlePrefab;
+	[Header(Headers.Values)]
 	[SerializeField, Range(0f, 10f)] private float force = 5f;
 	[SerializeField, Range(0f, 10f)] private float maxTime = 3f;
 	[SerializeField, Range(0f, 100)] private int maxHits = 1;
 	[SerializeField] private bool dealDamageOnCollision = true;
-	[SerializeField] private HitParticle hitParticlePrefab;
 	[SerializeField] private bool spawnHitDecal = true;
 
 	public float Force
