@@ -6,24 +6,23 @@ public class Gun : MonoBehaviour
 	[Header(Headers.Dependencies)]
 	[SerializeField] private GunAttributes attributes;
 	[SerializeField] private GunAnchors anchors;
-	[SerializeField] private Bullet bulletPrefab;
+	[SerializeField] private ParticleSystem muzzleParticle;
 	[Header(Headers.Events)]
 	[SerializeField] private OnShoot.Event OnShoot;
 
 	public GunAttributes Attributes
 		=> attributes;
-	public GunAnchors Anchors
-		=> anchors;
-
-	private void ApplyGripOffset()
-		=> transform.localPosition = -anchors.Grip.localPosition;
 
 	public bool TryShoot()
 	{
 		OnShoot.Invoke(new(this));
 
 		for (int i = 0; i < attributes.BulletCount; i++)
-			Bullet.Spawn(bulletPrefab, this);
+			Bullet.Spawn(attributes.BulletPrefab, this);
+
+		muzzleParticle.Play();
+
+		transform.localRotation *= Quaternion.Euler(-attributes.Recoil, 0f, 0f);
 
 		return true;
 	}
@@ -50,8 +49,8 @@ public class Gun : MonoBehaviour
 		return playerCamera.ScreenToWorldPoint(screenPosition);
 	}
 
-	private void Awake()
+	private void Update()
 	{
-		ApplyGripOffset();
+		transform.localRotation = Quaternion.Lerp(transform.localRotation, Quaternion.identity, 3f * Time.deltaTime);
 	}
 }
