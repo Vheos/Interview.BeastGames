@@ -1,4 +1,3 @@
-using System.Linq;
 using UnityEngine;
 
 public class GrenadeBehaviour : MonoBehaviour
@@ -17,7 +16,7 @@ public class GrenadeBehaviour : MonoBehaviour
 		int hitCount = Physics.SphereCastNonAlloc(position, explosionRadius, Vector3.up, raycastHits, 0f);
 		Debug.Log(hitCount);
 		for (int i = 0; i < hitCount; i++)
-			data.Bullet.Hit(raycastHits[i]);				
+			data.Bullet.Hit(raycastHits[i]);
 	}
 
 	private void Awake()

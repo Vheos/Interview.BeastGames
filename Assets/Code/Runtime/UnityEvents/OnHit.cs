@@ -36,7 +36,5 @@ public static class OnHit
 			collision = null;
 			this.raycastHit = raycastHit;
 		}
-
-
 	}
 }

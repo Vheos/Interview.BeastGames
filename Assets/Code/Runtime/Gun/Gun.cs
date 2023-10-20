@@ -20,8 +20,6 @@ public class Gun : MonoBehaviour
 
 	public bool TryShoot()
 	{
-		Vector3 muzzlePoint = GetNearMuzzlePoint(Camera.main);
-
 		OnShoot.Invoke(new(this));
 
 		for (int i = 0; i < attributes.BulletCount; i++)

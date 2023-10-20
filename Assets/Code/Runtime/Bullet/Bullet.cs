@@ -1,5 +1,4 @@
-﻿using DG.Tweening;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
@@ -25,7 +24,7 @@ public class Bullet : MonoBehaviour
 
 	private float destroyTime;
 
-	static private Quaternion RandomSpreadRotation(float maxAngle)
+	private static Quaternion RandomSpreadRotation(float maxAngle)
 		=> Quaternion.Euler(Random.value * maxAngle, Random.value * maxAngle, 0f);
 
 	public static Bullet Spawn(Bullet prefab, Gun gun)
@@ -98,6 +97,4 @@ public class Bullet : MonoBehaviour
 	{
 		Hit(collision);
 	}
-
-
 }
