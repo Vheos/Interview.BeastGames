@@ -6,8 +6,8 @@ public class GunInventory : MonoBehaviour
 {
 	// Inspector
 	[Header(Headers.Events)]
-	[SerializeField] private OnAddRemoveGun.Event OnAddGun;
-	[SerializeField] private OnAddRemoveGun.Event OnRemoveGun;
+	[SerializeField] private OnAddGun.Event OnAddGun;
+	[SerializeField] private OnRemoveGun.Event OnRemoveGun;
 	[SerializeField] private OnSwitchGun.Event OnSwitchGun;
 
 	private List<Gun> guns;

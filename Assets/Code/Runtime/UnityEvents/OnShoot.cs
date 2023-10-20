@@ -12,12 +12,10 @@ public static class OnShoot
 	public readonly struct Data
 	{
 		public readonly Gun Gun;
-		public readonly Bullet Bullet;
 
-		public Data(Gun gun, Bullet bullet)
+		public Data(Gun gun)
 		{
 			Gun = gun;
-			Bullet = bullet;
 		}
 	}
 }

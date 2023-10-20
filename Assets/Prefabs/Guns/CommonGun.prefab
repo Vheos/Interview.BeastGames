@@ -110,6 +110,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 5
+  bulletCount: 1
   damageModifiers: []
   fallbackDamageModifier: 0
 --- !u!114 &4546919858925613767

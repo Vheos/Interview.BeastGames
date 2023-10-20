@@ -15,18 +15,42 @@ public class Gun : MonoBehaviour
 	public GunAnchors Anchors
 		=> anchors;
 
-	public void ApplyGripOffset()
+	private void ApplyGripOffset()
 		=> transform.localPosition = -anchors.Grip.localPosition;
 
 	public bool TryShoot()
 	{
-		Bullet newBullet = Bullet.Spawn(bulletPrefab, this);
+		OnShoot.Invoke(new(this));
 
-		OnShoot.Invoke(new(this, newBullet));
+		for (int i = 0; i < attributes.BulletCount; i++)
+			Bullet.Spawn(bulletPrefab, this);
+
 		return true;
 	}
 
-	private void Start()
+	public float GetDamageModifierFor(ArmorType armorType)
+	{
+		foreach (var damageModifier in attributes.DamageModifiers)
+			if (damageModifier.ArmorType == armorType)
+				return damageModifier.Multiplier;
+
+		return attributes.FallbackDamageModifier;
+	}
+	public float GetDamageDealtTo(ArmorType armorType)
+		=> attributes.Damage * GetDamageModifierFor(armorType);
+	public float GetDamageModifierFor(Destructible destructible)
+		=> GetDamageModifierFor(destructible.Attributes.ArmorType);
+	public float GetDamageDealtTo(Destructible destructible)
+		=> GetDamageDealtTo(destructible.Attributes.ArmorType);
+	public Vector3 GetNearMuzzlePoint(Camera playerCamera)
+	{
+		Vector3 worldPosition = anchors.Muzzle.transform.position;
+		Vector3 screenPosition = playerCamera.WorldToScreenPoint(worldPosition);
+		screenPosition.z = playerCamera.nearClipPlane * 2;
+		return playerCamera.ScreenToWorldPoint(screenPosition);
+	}
+
+	private void Awake()
 	{
 		ApplyGripOffset();
 	}

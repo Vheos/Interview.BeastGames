@@ -132,7 +132,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -3455033526120757433, guid: 0b890386bbbf7104aade2b41a7f6b5db, type: 3}
       propertyPath: damage
-      value: 6
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: -3455033526120757433, guid: 0b890386bbbf7104aade2b41a7f6b5db, type: 3}
+      propertyPath: bulletSpread
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -3455033526120757433, guid: 0b890386bbbf7104aade2b41a7f6b5db, type: 3}
       propertyPath: damageModifiers.Array.size
@@ -144,11 +148,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -3455033526120757433, guid: 0b890386bbbf7104aade2b41a7f6b5db, type: 3}
       propertyPath: damageModifiers.Array.data[0].<ArmorType>k__BackingField
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -3455033526120757433, guid: 0b890386bbbf7104aade2b41a7f6b5db, type: 3}
       propertyPath: damageModifiers.Array.data[1].<ArmorType>k__BackingField
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -3455033526120757433, guid: 0b890386bbbf7104aade2b41a7f6b5db, type: 3}
       propertyPath: damageModifiers.Array.data[0].<Multiplier>k__BackingField
@@ -174,6 +178,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: -0.648
       objectReference: {fileID: 0}
+    - target: {fileID: 1255450995905567737, guid: 0b890386bbbf7104aade2b41a7f6b5db, type: 3}
+      propertyPath: bulletPrefab
+      value: 
+      objectReference: {fileID: 355489985959237658, guid: 0f840954cd21ba64ebc735787382c608, type: 3}
     - target: {fileID: 5334149795252676824, guid: 0b890386bbbf7104aade2b41a7f6b5db, type: 3}
       propertyPath: m_Name
       value: Crossbow

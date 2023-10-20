@@ -3,19 +3,44 @@ using UnityEngine;
 [CreateAssetMenu(fileName = nameof(UnityEventLogger), menuName = nameof(UnityEventLogger))]
 public class UnityEventLogger : ScriptableObject
 {
-	private string NameOrNull(Object obj)
+	[SerializeField] private bool enableEventLogs = false;
+	[SerializeField] private LogType logType = LogType.Log;
+
+	private void Log(string eventName, Component invoker, string message = null)
+	{
+		if (!enableEventLogs)
+			return;
+
+		string text = $"{invoker.name}.{eventName}";
+		if (!string.IsNullOrEmpty(message))
+			text += $":   {message}";
+
+		Debug.unityLogger.Log(logType, text);
+	}
+	private string WrapName(Object obj)
 		=> obj != null ? obj.name : "null";
 
-	public void Log(OnAddRemoveGun.Data data)
-		=> Debug.Log($"{data.Inventory.name}.{nameof(OnAddRemoveGun)}:   {NameOrNull(data.Gun)}");
+	public void Log(OnAddGun.Data data)
+		=> Log(nameof(OnAddGun), data.Inventory, WrapName(data.Gun));
+	public void Log(OnRemoveGun.Data data)
+		=> Log(nameof(OnRemoveGun), data.Inventory, WrapName(data.Gun));
 	public void Log(OnSwitchGun.Data data)
-		=> Debug.Log($"{data.Inventory.name}.{nameof(OnSwitchGun)}:   {NameOrNull(data.From)}   ->   {NameOrNull(data.To)}");
+		=> Log(nameof(OnSwitchGun), data.Inventory, $"{WrapName(data.From)}   ->   {WrapName(data.To)}");
+
 	public void Log(OnShoot.Data data)
-		=> Debug.Log($"{data.Gun.name}.{nameof(OnShoot)}:   {NameOrNull(data.Bullet)}");
+		=> Log(nameof(OnShoot), data.Gun);
+
+	public void Log(OnSpawnBullet.Data data)
+		=> Log(nameof(OnSpawnBullet), data.Bullet);
 	public void Log(OnHit.Data data)
-		=> Debug.Log($"{data.Bullet.name}.{nameof(OnHit)}:   {NameOrNull(data.Collider)}");
-	public void Log(OnGetShot.Data data)
-		=> Debug.Log($"{data.Destructible.name}.{nameof(OnGetShot)}:   {NameOrNull(data.Bullet)}");
+		=> Log(nameof(OnHit), data.Bullet, $"{WrapName(data.Collider)}");
+	public void Log(OnDespawnBullet.Data data)
+		=> Log(nameof(OnDespawnBullet), data.Bullet);
+
+	public void Log(OnGetHit.Data data)
+		=> Log(nameof(OnGetHit), data.Destructible, $"{WrapName(data.HitData.Bullet)}");
 	public void Log(OnChangeHealth.Data data)
-		=> Debug.Log($"{data.Destructible.name}.{nameof(OnSwitchGun)}:   {data.From:F1}   ->   {data.To:F1}");
+		=> Log(nameof(OnChangeHealth), data.Destructible, $"{data.From:F1}   ->   {data.To:F1}");
+	public void Log(OnDespawnDestructible.Data data)
+		=> Log(nameof(OnDespawnDestructible), data.Destructible);
 }

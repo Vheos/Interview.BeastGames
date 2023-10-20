@@ -208,15 +208,23 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -3455033526120757433, guid: 0b890386bbbf7104aade2b41a7f6b5db, type: 3}
       propertyPath: damage
-      value: 9
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -3455033526120757433, guid: 0b890386bbbf7104aade2b41a7f6b5db, type: 3}
+      propertyPath: bulletCount
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: -3455033526120757433, guid: 0b890386bbbf7104aade2b41a7f6b5db, type: 3}
+      propertyPath: bulletSpread
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: -3455033526120757433, guid: 0b890386bbbf7104aade2b41a7f6b5db, type: 3}
       propertyPath: fallbackDamageModifier
-      value: 0.1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -3455033526120757433, guid: 0b890386bbbf7104aade2b41a7f6b5db, type: 3}
       propertyPath: damageModifiers.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: -3455033526120757433, guid: 0b890386bbbf7104aade2b41a7f6b5db, type: 3}
       propertyPath: overrideDamageModifiers.Array.size
@@ -224,11 +232,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -3455033526120757433, guid: 0b890386bbbf7104aade2b41a7f6b5db, type: 3}
       propertyPath: damageModifiers.Array.data[0].<ArmorType>k__BackingField
-      value: 4
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -3455033526120757433, guid: 0b890386bbbf7104aade2b41a7f6b5db, type: 3}
+      propertyPath: damageModifiers.Array.data[1].<ArmorType>k__BackingField
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: -3455033526120757433, guid: 0b890386bbbf7104aade2b41a7f6b5db, type: 3}
       propertyPath: damageModifiers.Array.data[0].<Multiplier>k__BackingField
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -3455033526120757433, guid: 0b890386bbbf7104aade2b41a7f6b5db, type: 3}
+      propertyPath: damageModifiers.Array.data[1].<Multiplier>k__BackingField
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: -3455033526120757433, guid: 0b890386bbbf7104aade2b41a7f6b5db, type: 3}
       propertyPath: overrideDamageModifiers.Array.data[0].<Armor>k__BackingField
@@ -246,6 +262,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: -0.549
       objectReference: {fileID: 0}
+    - target: {fileID: 1255450995905567737, guid: 0b890386bbbf7104aade2b41a7f6b5db, type: 3}
+      propertyPath: bulletPrefab
+      value: 
+      objectReference: {fileID: 3027600126878360118, guid: 64a14801e415e4348b09143d4d7c7a37, type: 3}
     - target: {fileID: 5334149795252676824, guid: 0b890386bbbf7104aade2b41a7f6b5db, type: 3}
       propertyPath: m_Name
       value: Shotgun
