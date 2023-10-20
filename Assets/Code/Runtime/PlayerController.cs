@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 using ActionContext = UnityEngine.InputSystem.InputAction.CallbackContext;
 
 
@@ -33,6 +34,14 @@ internal class PlayerController : MonoBehaviour
 		=> lookInput += context.ReadValue<Vector2>();
 	private void ResetLookInput()
 		=> lookInput = default;
+	private void DebugInput()
+	{
+		if (Keyboard.current.escapeKey.wasPressedThisFrame)
+			Application.Quit();
+
+		if (Keyboard.current.iKey.wasPressedThisFrame)
+			lookSpeed.y *= -1f;
+	}
 
 	// Move & Fall
 	private void Move()
@@ -133,6 +142,7 @@ internal class PlayerController : MonoBehaviour
 
 	private void Update()
 	{
+		DebugInput();
 		Look();
 		Move();
 	}
