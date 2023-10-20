@@ -6,6 +6,7 @@ public class Destructible : MonoBehaviour
 	// Inspector
 	[Header(Headers.Dependencies)]
 	[SerializeField] private DestructibleAttributes attributes;
+	[SerializeField] private new Collider collider;
 
 	[Header(Headers.Events)]
 	[SerializeField] private OnGetHit.Event onGetHit;
@@ -15,14 +16,19 @@ public class Destructible : MonoBehaviour
 	public DestructibleAttributes Attributes
 		=> attributes;
 
+	private float recentDamage;
+
 	private Tween damageTween;
+	private Tween despawnTween;
+	public bool IsDespawning
+		=> despawnTween != null;
 	private float health;
 	public float Health
 	{
 		get => health;
 		set
 		{
-			if (value == health)
+			if (value == health || IsDespawning)
 				return;
 
 			float previous = health;
@@ -42,13 +48,13 @@ public class Destructible : MonoBehaviour
 		if (health <= 0f)
 			Despawn();
 		else
-			AnimateDamage(damage);
+			recentDamage += damage;
 	}
 	private void AnimateDamage(float damage)
 	{
 		float healthPrecentLost = damage / attributes.MaxHealth;
 		float duration = 0.5f + healthPrecentLost;
-		float strength = 0.05f + healthPrecentLost;
+		float strength = 2 * healthPrecentLost;
 		damageTween?.Kill(true);
 		damageTween = transform.DOShakeScale(duration, strength);
 	}
@@ -61,13 +67,27 @@ public class Destructible : MonoBehaviour
 	}
 	public void Despawn()
 	{
+		collider.enabled = false;
+		transform.DOKill(true);
+		despawnTween = transform.DOScale(Vector3.zero, 1f);
+		despawnTween.onComplete += DestroySelf;
 		onDespawn.Invoke(new(this));
-		Destroy(gameObject);
 	}
+
+	private void DestroySelf()
+		=> Destroy(gameObject);
 
 
 	private void Awake()
 	{
 		health = attributes.MaxHealth;
+	}
+	private void Update()
+	{
+		if(recentDamage > 0f)
+		{
+			AnimateDamage(recentDamage);
+			recentDamage = 0f;
+		}
 	}
 }
