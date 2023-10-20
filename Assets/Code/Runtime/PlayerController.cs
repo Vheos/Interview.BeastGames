@@ -82,7 +82,7 @@ internal class PlayerController : MonoBehaviour
 		get
 		{
 			float currentAngle = transform.localEulerAngles.y;
-			float offsetAngle = lookInput.x * lookSpeed.x * Time.deltaTime;
+			float offsetAngle = lookInput.x * lookSpeed.x / 100f;
 			return currentAngle + offsetAngle;
 		}
 	}
@@ -91,7 +91,7 @@ internal class PlayerController : MonoBehaviour
 		get
 		{
 			float currentAngle = cameraAnchor.localEulerAngles.x;
-			float offsetAngle = lookInput.y * lookSpeed.y * Time.deltaTime;
+			float offsetAngle = lookInput.y * lookSpeed.y / 100f;
 			return Helpers.ClampAngle(currentAngle + offsetAngle, -maxPitch, +maxPitch);
 		}
 	}
