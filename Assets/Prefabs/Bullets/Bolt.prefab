@@ -108,6 +108,10 @@ PrefabInstance:
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: -279638353600922151, guid: c2c5ff8bdebe4964f87d0ec481e87c2e, type: 3}
+      propertyPath: spawnHitDecal
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -279638353600922151, guid: c2c5ff8bdebe4964f87d0ec481e87c2e, type: 3}
       propertyPath: dealDamageOnCollision
       value: 0
       objectReference: {fileID: 0}
