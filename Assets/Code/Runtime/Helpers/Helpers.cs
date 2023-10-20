@@ -1,3 +1,4 @@
+using DG.Tweening;
 using UnityEngine;
 
 public static class Helpers
@@ -25,4 +26,21 @@ public static class Helpers
 	=> new(transform.position, transform.forward);
 	public static Layer Layer(this Component component)
 		=> (Layer)component.gameObject.layer;
+	public static bool TryGetDestructible(this Collider collider, out Destructible destructible)
+	{
+		if (collider.Layer() != global::Layer.Destructible)
+		{
+			destructible = null;
+			return false;
+		}
+
+		return collider.TryGetInSelfOrParents(out destructible);
+	}
+
+
+	public static Tween DOWidthScale(this TrailRenderer trailRenderer, float duration, float scale)
+		=> DOTween.To(() => trailRenderer.widthMultiplier, x => trailRenderer.widthMultiplier = x, scale, duration);
+
+	public static void SnapTo(this Transform a, Transform b)
+		=> a.SetPositionAndRotation(b.position, b.rotation);
 }
