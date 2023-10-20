@@ -5,8 +5,8 @@ public class Gun : MonoBehaviour
 	// Inspector
 	[Header(Headers.Dependencies)]
 	[SerializeField] private GunAttributes attributes;
-	[SerializeField] private GunAnchors anchors;
 	[SerializeField] private ParticleSystem muzzleParticle;
+	[SerializeField] private Crosshair crosshair;
 	[Header(Headers.Events)]
 	[SerializeField] private OnShoot.Event OnShoot;
 
@@ -16,18 +16,20 @@ public class Gun : MonoBehaviour
 
 	public bool TryShoot()
 	{
+		muzzleParticle.Play();
+		ApplyRecoil();
+
 		OnShoot.Invoke(new(this));
 
 		for (int i = 0; i < attributes.BulletCount; i++)
 			Bullet.Spawn(attributes.BulletPrefab, this);
 
-		muzzleParticle.Play();
-
-		transform.localRotation *= Quaternion.Euler(-attributes.Recoil, 0f, 0f);
-
 		return true;
 	}
-
+	private void ApplyRecoil()
+		=> Inventory.transform.localRotation *= Quaternion.Euler(-attributes.Recoil, 0f, 0f);
+	private void RecoverFromRecoil()
+		=> Inventory.transform.localRotation = Quaternion.Lerp(Inventory.transform.localRotation, Quaternion.identity, 3f * Time.deltaTime);
 	public float GetDamageModifierFor(ArmorType armorType)
 	{
 		foreach (var damageModifier in attributes.DamageModifiers)
@@ -37,21 +39,21 @@ public class Gun : MonoBehaviour
 		return attributes.FallbackDamageModifier;
 	}
 	public float GetDamageDealtTo(ArmorType armorType)
-		=> attributes.Damage * GetDamageModifierFor(armorType);
+		=> attributes.BaseDamage * GetDamageModifierFor(armorType);
 	public float GetDamageModifierFor(Destructible destructible)
 		=> GetDamageModifierFor(destructible.Attributes.ArmorType);
 	public float GetDamageDealtTo(Destructible destructible)
 		=> GetDamageDealtTo(destructible.Attributes.ArmorType);
-	public Vector3 GetNearMuzzlePoint(Camera playerCamera)
-	{
-		Vector3 worldPosition = anchors.Muzzle.transform.position;
-		Vector3 screenPosition = playerCamera.WorldToScreenPoint(worldPosition);
-		screenPosition.z = playerCamera.nearClipPlane * 2;
-		return playerCamera.ScreenToWorldPoint(screenPosition);
-	}
+	public Vector3 GetNearMuzzlePoint(Camera camera)
+		=> muzzleParticle.transform.position.RetainScreenPositionAtDistance(camera.nearClipPlane * 2, camera);
 
+	private void OnEnable()
+	{
+		crosshair.UpdatePosition(this, Camera.main, true);
+	}
 	private void Update()
 	{
-		transform.localRotation = Quaternion.Lerp(transform.localRotation, Quaternion.identity, 3f * Time.deltaTime);
+		RecoverFromRecoil();
+		crosshair.UpdatePosition(this, Camera.main);
 	}
 }
