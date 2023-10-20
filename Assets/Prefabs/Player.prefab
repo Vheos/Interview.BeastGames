@@ -225,7 +225,7 @@ MonoBehaviour:
   moveAcceleration: 0.5
   maxFallSpeed: 50
   fallAcceleration: 0.5
-  lookSpeed: {x: 5, y: -4}
+  lookSpeed: {x: 8, y: -7}
   maxPitch: 60
 --- !u!143 &8616685848737228382
 CharacterController:
