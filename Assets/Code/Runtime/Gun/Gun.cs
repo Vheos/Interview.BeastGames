@@ -12,6 +12,7 @@ public class Gun : MonoBehaviour
 
 	public GunAttributes Attributes
 		=> attributes;
+	public GunInventory Inventory { get; set; }
 
 	public bool TryShoot()
 	{
