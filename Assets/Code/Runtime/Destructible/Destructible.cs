@@ -16,7 +16,7 @@ public class Destructible : MonoBehaviour
 	public DestructibleAttributes Attributes
 		=> attributes;
 
-	private Tween takeDamageTween;
+	private Tween damageTween;
 	private float health;
 	public float Health
 	{
@@ -28,44 +28,44 @@ public class Destructible : MonoBehaviour
 
 			float previous = health;
 			health = value;
+
 			onChangeHealth.Invoke(new(this, previous, health));
 
-			TryAnimateTakeDamage(previous - health);
-
-			if (health <= 0f)
-				Despawn();
+			HandleDamage(previous - health);
 		}
 	}
 
-	private void TryAnimateTakeDamage(float damage)
+	private void HandleDamage(float damage)
 	{
-		if (damage <= 0f)
+		if (damage <= 0)
 			return;
 
+		if (health <= 0f)
+			Despawn();
+		else
+			AnimateDamage(damage);
+	}
+	private void AnimateDamage(float damage)
+	{
 		float healthPrecentLost = damage / attributes.MaxHealth;
-		float duration = healthPrecentLost.MapFrom01(0.5f, 1.5f);
-		float strength = healthPrecentLost.MapFrom01(0f, 1f);
-		takeDamageTween?.Kill(true);
-		takeDamageTween = transform.DOShakeScale(duration, strength);
+		float duration = 0.5f + healthPrecentLost;
+		float strength = 0.05f + healthPrecentLost;
+		damageTween?.Kill(true);
+		damageTween = transform.DOShakeScale(duration, strength);
 	}
 
-	private void Despawn()
+	public void GetHit(OnHit.Data hitData)
+	{
+		onGetHit.Invoke(new(this, hitData));
+		if (hitData.Bullet.Attributes.DealDamageOnCollision || !hitData.IsCollision)
+			Health -= hitData.Bullet.Gun.GetDamageDealtTo(this);
+	}
+	public void Despawn()
 	{
 		onDespawn.Invoke(new(this));
 		Destroy(gameObject);
 	}
 
-	public void GetHitOnCollision(Bullet bullet, Collision collision)
-		=> onGetHit.Invoke(new(this, bullet, collision));
-
-	public void GetHitBy(Bullet bullet)
-	{
-		GetHitOnCollision(bullet, null);
-		TakeDamageFrom(bullet.Gun);
-	}
-
-	public void TakeDamageFrom(Gun gun)
-		=> Health -= gun.GetDamageDealtTo(this);
 
 	private void Awake()
 	{

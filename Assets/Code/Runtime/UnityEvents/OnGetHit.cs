@@ -13,22 +13,15 @@ public static class OnGetHit
 	public readonly struct Data
 	{
 		public readonly Destructible Destructible;
-		public readonly Bullet Bullet;
+		public readonly OnHit.Data HitData;
 
-		private readonly Collision collision;
+		public Bullet Bullet
+			=> HitData.Bullet;
 
-		public Layer Layer
-			=> (Layer)collision.collider.gameObject.layer;
-		public Collider Collider
-			=> collision.collider;
-		public ContactPoint ContactPoint
-			=> collision.GetContact(0);
-
-		public Data(Destructible destructible, Bullet bullet, Collision collision)
+		public Data(Destructible destructible, OnHit.Data hitData)
 		{
 			Destructible = destructible;
-			Bullet = bullet;
-			this.collision = collision;
+			HitData = hitData;
 		}
 	}
 }

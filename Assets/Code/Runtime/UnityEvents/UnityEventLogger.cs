@@ -38,7 +38,7 @@ public class UnityEventLogger : ScriptableObject
 		=> Log(nameof(OnDespawnBullet), data.Bullet);
 
 	public void Log(OnGetHit.Data data)
-		=> Log(nameof(OnGetHit), data.Destructible, $"{WrapName(data.Bullet)}");
+		=> Log(nameof(OnGetHit), data.Destructible, $"{WrapName(data.HitData.Bullet)}");
 	public void Log(OnChangeHealth.Data data)
 		=> Log(nameof(OnChangeHealth), data.Destructible, $"{data.From:F1}   ->   {data.To:F1}");
 	public void Log(OnDespawnDestructible.Data data)

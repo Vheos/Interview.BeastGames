@@ -13,19 +13,30 @@ public static class OnHit
 	public readonly struct Data
 	{
 		public readonly Bullet Bullet;
-		public readonly Collision Collision;
+		private readonly Collision collision;
+		private readonly RaycastHit? raycastHit;
 
-		public Layer Layer
-			=> (Layer)Collision.collider.gameObject.layer;
+		public bool IsCollision
+			=> collision != null;
+		public bool IsRaycast
+			=> raycastHit != null;
 		public Collider Collider
-			=> Collision.collider;
-		public ContactPoint ContactPoint
-			=> Collision.GetContact(0);
+			=> collision != null ? collision.collider : raycastHit?.collider;
 
 		public Data(Bullet bullet, Collision collision)
 		{
 			Bullet = bullet;
-			Collision = collision;
+			this.collision = collision;
+			raycastHit = null;
 		}
+
+		public Data(Bullet bullet, RaycastHit raycastHit)
+		{
+			Bullet = bullet;
+			collision = null;
+			this.raycastHit = raycastHit;
+		}
+
+
 	}
 }
