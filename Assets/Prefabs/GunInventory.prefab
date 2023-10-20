@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 3433850629244392201}
   - component: {fileID: 6780789103021963011}
-  - component: {fileID: 4290004159870250307}
   m_Layer: 0
   m_Name: GunInventory
   m_TagString: Untagged
@@ -27,7 +26,7 @@ Transform:
   m_GameObject: {fileID: 8968292843982792984}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0.75, y: -0.75, z: 1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -93,19 +92,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &4290004159870250307
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8968292843982792984}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b5c52c194cd248b419cfb17d76c3c654, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  <Target>k__BackingField: {fileID: 0}
 --- !u!1001 &5578148336707759329
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -129,6 +115,10 @@ PrefabInstance:
     - target: {fileID: 7721009874773928073, guid: 745ba7af14b1f3345a0db65fbcdb1831, type: 3}
       propertyPath: m_Name
       value: Crossbow
+      objectReference: {fileID: 0}
+    - target: {fileID: 7721009874773928073, guid: 745ba7af14b1f3345a0db65fbcdb1831, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -164,6 +154,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Shotgun
       objectReference: {fileID: 0}
+    - target: {fileID: 7721009874773928073, guid: 96b7ea89b096f574fabfb10a35da8887, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -196,7 +190,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7721009874773928073, guid: 45e559b0a08f8e54fab171f830157823, type: 3}
       propertyPath: m_Name
-      value: Blaster
+      value: GrenadeLauncher
+      objectReference: {fileID: 0}
+    - target: {fileID: 7721009874773928073, guid: 45e559b0a08f8e54fab171f830157823, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

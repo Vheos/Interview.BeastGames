@@ -39,6 +39,7 @@ public class GunInventory : MonoBehaviour
 	public void Add(Gun gun)
 	{
 		gun.transform.parent = transform;
+		gun.Inventory = this;
 		gun.gameObject.SetActive(false);
 		guns.Add(gun);
 		OnAddGun.Invoke(new(this, gun));
@@ -49,6 +50,7 @@ public class GunInventory : MonoBehaviour
 			return false;
 
 		gun.transform.parent = null;
+		gun.Inventory = null;
 		OnRemoveGun.Invoke(new(this, gun));
 		return true;
 	}
