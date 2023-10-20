@@ -21,7 +21,16 @@ public static class OnHit
 		public bool IsRaycast
 			=> raycastHit != null;
 		public Collider Collider
-			=> collision != null ? collision.collider : raycastHit?.collider;
+			=> collision != null ? collision.collider 
+			: raycastHit?.collider;
+		public Vector3 Point
+			=> collision != null ? collision.GetContact(0).point 
+			: raycastHit != null ? raycastHit.Value.point
+			: default;
+		public Vector3 Normal
+			=> collision != null ? collision.GetContact(0).normal
+			: raycastHit != null ? raycastHit.Value.normal
+			: default;
 
 		public Data(Bullet bullet, Collision collision)
 		{
