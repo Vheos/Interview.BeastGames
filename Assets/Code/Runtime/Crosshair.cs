@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Crosshair : MonoBehaviour
@@ -22,7 +20,7 @@ public class Crosshair : MonoBehaviour
 	private const float maxDistance = 100f;
 
 	public void UpdatePosition(Gun gun, Camera camera, bool instantly = false)
-	{	
+	{
 		Ray ray = new(gun.GetNearMuzzlePoint(camera), transform.forward);
 		bool hitSomething = Physics.Raycast(ray, out var raycastHit, maxDistance, raycastMask);
 

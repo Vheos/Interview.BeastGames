@@ -84,7 +84,7 @@ public class Destructible : MonoBehaviour
 	}
 	private void Update()
 	{
-		if(recentDamage > 0f)
+		if (recentDamage > 0f)
 		{
 			AnimateDamage(recentDamage);
 			recentDamage = 0f;
