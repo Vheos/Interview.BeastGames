@@ -7,6 +7,8 @@ public class BulletAttributes : MonoBehaviour
 	[SerializeField, Range(0f, 10f)] private float maxTime = 3f;
 	[SerializeField, Range(0f, 100)] private int maxHits = 1;
 	[SerializeField] private bool dealDamageOnCollision = true;
+	[SerializeField] private HitParticle hitParticlePrefab;
+	[SerializeField] private bool spawnHitDecal = true;
 
 	public float Force
 		=> force * 1000f;
@@ -16,4 +18,8 @@ public class BulletAttributes : MonoBehaviour
 		=> maxHits;
 	public bool DealDamageOnCollision
 		=> dealDamageOnCollision;
+	public HitParticle HitParticlePrefab
+		=> hitParticlePrefab;
+	public bool SpawnHitDecal
+		=> spawnHitDecal;
 }
