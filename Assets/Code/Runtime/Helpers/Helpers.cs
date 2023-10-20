@@ -15,6 +15,7 @@ public static class Helpers
 	}
 	public static float MapFrom01(this float @this, float c, float d)
 		=> @this * (d - c) + c;
+	public static float Map(this float @this, float a, float b, float c, float d) => (@this - a) * (d - c) / (b - a) + c;
 	public static bool TryGetInSelfOrParents<T>(this Component @this, out T @out) where T : Component
 	{
 		@out = @this.GetComponentInParent<T>(true);
@@ -43,4 +44,16 @@ public static class Helpers
 
 	public static void SnapTo(this Transform a, Transform b)
 		=> a.SetPositionAndRotation(b.position, b.rotation);
+
+	public static Color NewA(this Color color, float a)
+		=> new(color.r, color.g, color.b, a);
+	public static Vector3 NewZ(this Vector3 vector, float z)
+		=> new(vector.x, vector.y, z);
+	public static Vector3 RetainScreenPositionAtDistance(this Vector3 point, float distance, Camera camera)
+		=> point.WorldToScreen(camera).NewZ(distance).ScreenToWorld(camera);
+	public static Vector3 WorldToScreen(this Vector3 worldPosition, Camera camera)
+		=> camera.WorldToScreenPoint(worldPosition);
+	public static Vector3 ScreenToWorld(this Vector3 screenPosition, Camera camera)
+		=> camera.ScreenToWorldPoint(screenPosition);
+
 }
