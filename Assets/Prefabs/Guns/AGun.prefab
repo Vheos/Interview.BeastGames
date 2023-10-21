@@ -48,7 +48,8 @@ MonoBehaviour:
   spriteRenderer: {fileID: 3083736857444926780}
   speed: 10
   distance: 5
-  noTargetColor: {r: 1, g: 1, b: 1, a: 0.25}
+  noTargetColor: {r: 1, g: 1, b: 1, a: 0.050980393}
+  environemntTargetColor: {r: 1, g: 1, b: 1, a: 0.5019608}
   damageGradient:
     serializedVersion: 2
     key0: {r: 1, g: 0, b: 0, a: 1}
