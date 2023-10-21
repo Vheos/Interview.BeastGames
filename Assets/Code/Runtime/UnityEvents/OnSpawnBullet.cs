@@ -13,9 +13,9 @@ public static class OnSpawnBullet
 	{
 		public readonly Bullet Bullet;
 
-		public Data(Bullet bullet)
+		public Data(Bullet invoker)
 		{
-			Bullet = bullet;
+			Bullet = invoker;
 		}
 	}
 }

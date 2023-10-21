@@ -15,9 +15,9 @@ public static class OnSwitchGun
 		public readonly Gun From;
 		public readonly Gun To;
 
-		public Data(GunInventory inventory, Gun from, Gun to)
+		public Data(GunInventory invoker, Gun from, Gun to)
 		{
-			Inventory = inventory;
+			Inventory = invoker;
 			From = from;
 			To = to;
 		}

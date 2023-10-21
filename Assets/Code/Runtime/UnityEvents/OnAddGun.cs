@@ -14,10 +14,10 @@ public static class OnAddGun
 		public readonly GunInventory Inventory;
 		public readonly Gun Gun;
 
-		public Data(GunInventory gunInventory, Gun gun)
+		public Data(GunInventory invoker, Gun gun)
 		{
 			Gun = gun;
-			Inventory = gunInventory;
+			Inventory = invoker;
 		}
 	}
 }

@@ -12,19 +12,17 @@ public class Bullet : MonoBehaviour
 	[SerializeField] private OnHit.Event OnHit;
 	[SerializeField] private OnDespawnBullet.Event OnDespawn;
 
-	public BulletAttributes Attributes
-		=> attributes;
-
+	// Fields
 	private int hits;
-	public Gun Gun { get; private set; }
-	public BulletTrail Trail
-		=> trail;
-
 	private float destroyTime;
 
-	private static Quaternion RandomSpreadRotation(float maxAngle)
-		=> Quaternion.Euler(Random.Range(-maxAngle, +maxAngle) / 2f, Random.Range(-maxAngle, +maxAngle) / 2f, 0f);
-
+	// Public
+	public BulletAttributes Attributes
+		=> attributes;
+	public BulletTrail Trail
+		=> trail;
+	public Gun Gun
+	{ get; private set; }
 	public static Bullet Spawn(Bullet prefab, Gun gun)
 	{
 		Vector3 position = gun.GetNearMuzzlePoint(Camera.main);
@@ -56,11 +54,14 @@ public class Bullet : MonoBehaviour
 	}
 	public void Despawn()
 	{
-		Trail.UnparentAndFade();
+		Trail.Despawn();
 		OnDespawn.Invoke(new(this));
 		Destroy(gameObject);
 	}
 
+	// Private
+	private static Quaternion RandomSpreadRotation(float maxAngle)
+		=> Quaternion.Euler(Random.Range(-maxAngle, +maxAngle) / 2f, Random.Range(-maxAngle, +maxAngle) / 2f, 0f);
 	private void SetDespawnTime()
 		=> destroyTime = Time.time + attributes.MaxTime;
 	private bool CheckDespawnOnTime()
@@ -76,6 +77,8 @@ public class Bullet : MonoBehaviour
 		if (hits >= attributes.MaxHits)
 			Despawn();
 	}
+	private void AddForce()
+		=> rigidBody.AddForce(transform.forward * attributes.Force);
 	private void InvokeEventsAndSpawnParticles(OnHit.Data hitData)
 	{
 		OnHit.Invoke(hitData);
@@ -93,14 +96,13 @@ public class Bullet : MonoBehaviour
 			hitParticle.IsDecalVisible = attributes.SpawnHitDecal;
 		}
 	}
-	private void AddForce()
-		=> rigidBody.AddForce(transform.forward * attributes.Force);
 
-	private void FixedUpdate()
+	// Mono
+	protected void FixedUpdate()
 	{
 		CheckDespawnOnTime();
 	}
-	private void OnCollisionEnter(Collision collision)
+	protected void OnCollisionEnter(Collision collision)
 	{
 		Hit(collision);
 	}

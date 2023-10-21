@@ -32,16 +32,16 @@ public static class OnHit
 			: raycastHit != null ? raycastHit.Value.normal
 			: default;
 
-		public Data(Bullet bullet, Collision collision)
+		public Data(Bullet invoker, Collision collision)
 		{
-			Bullet = bullet;
+			Bullet = invoker;
 			this.collision = collision;
 			raycastHit = null;
 		}
 
-		public Data(Bullet bullet, RaycastHit raycastHit)
+		public Data(Bullet invoker, RaycastHit raycastHit)
 		{
-			Bullet = bullet;
+			Bullet = invoker;
 			collision = null;
 			this.raycastHit = raycastHit;
 		}

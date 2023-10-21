@@ -12,6 +12,7 @@ public class BulletAttributes : MonoBehaviour
 	[SerializeField] private bool dealDamageOnCollision = true;
 	[SerializeField] private bool spawnHitDecal = true;
 
+	// Public
 	public float Force
 		=> force * 1000f;
 	public float MaxTime

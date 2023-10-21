@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 209233240796874263}
   - component: {fileID: 3640529845531224817}
   m_Layer: 9
-  m_Name: CommonDestructible
+  m_Name: ADestructible
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -46,6 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attributes: {fileID: 3640529845531224817}
+  collider: {fileID: 0}
   onGetHit:
     m_PersistentCalls:
       m_Calls:
@@ -103,5 +104,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e30b50c5446ddb2438ed2eba3dd1102a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 50
+  hitParticlePrefab: {fileID: 0}
+  maxHealth: 30
   armorType: 0

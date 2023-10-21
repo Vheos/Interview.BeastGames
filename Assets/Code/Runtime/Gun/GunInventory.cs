@@ -6,16 +6,17 @@ public class GunInventory : MonoBehaviour
 {
 	// Inspector
 	[Header(Headers.Events)]
-	[SerializeField] private OnAddGun.Event OnAddGun;
-	[SerializeField] private OnRemoveGun.Event OnRemoveGun;
-	[SerializeField] private OnSwitchGun.Event OnSwitchGun;
+	public OnAddGun.Event OnAddGun;
+	public OnRemoveGun.Event OnRemoveGun;
+	public OnSwitchGun.Event OnSwitchGun;
 
+	// Fields
 	private List<Gun> guns;
 	private Gun currentGun;
 
+	// Public
 	public IReadOnlyList<Gun> Guns
 		=> guns;
-
 	public Gun CurrentGun
 	{
 		get => currentGun;
@@ -35,7 +36,6 @@ public class GunInventory : MonoBehaviour
 			OnSwitchGun?.Invoke(new(this, previousGun, currentGun));
 		}
 	}
-
 	public void Add(Gun gun)
 	{
 		gun.transform.parent = transform;
@@ -67,7 +67,8 @@ public class GunInventory : MonoBehaviour
 	public bool TryShoot()
 		=> currentGun != null && currentGun.TryShoot();
 
-	private void Awake()
+	// Mono
+	protected void Awake()
 	{
 		guns = new List<Gun>();
 
@@ -77,6 +78,3 @@ public class GunInventory : MonoBehaviour
 		CurrentGun = guns.FirstOrDefault();
 	}
 }
-
-
-

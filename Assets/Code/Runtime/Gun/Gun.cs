@@ -10,10 +10,11 @@ public class Gun : MonoBehaviour
 	[Header(Headers.Events)]
 	[SerializeField] private OnShoot.Event OnShoot;
 
+	// Public
 	public GunAttributes Attributes
 		=> attributes;
-	public GunInventory Inventory { get; set; }
-
+	public GunInventory Inventory
+	{ get; set; }
 	public bool TryShoot()
 	{
 		muzzleParticle.Play();
@@ -26,10 +27,8 @@ public class Gun : MonoBehaviour
 
 		return true;
 	}
-	private void ApplyRecoil()
-		=> Inventory.transform.localRotation *= Quaternion.Euler(-attributes.Recoil, 0f, 0f);
-	private void RecoverFromRecoil()
-		=> Inventory.transform.localRotation = Quaternion.Lerp(Inventory.transform.localRotation, Quaternion.identity, 3f * Time.deltaTime);
+	public Vector3 GetNearMuzzlePoint(Camera camera)
+		=> muzzleParticle.transform.position.RetainScreenPositionAtDistance(camera.nearClipPlane * 2, camera);
 	public float GetDamageModifierFor(ArmorType armorType)
 	{
 		foreach (var damageModifier in attributes.DamageModifiers)
@@ -44,14 +43,19 @@ public class Gun : MonoBehaviour
 		=> GetDamageModifierFor(destructible.Attributes.ArmorType);
 	public float GetDamageDealtTo(Destructible destructible)
 		=> GetDamageDealtTo(destructible.Attributes.ArmorType);
-	public Vector3 GetNearMuzzlePoint(Camera camera)
-		=> muzzleParticle.transform.position.RetainScreenPositionAtDistance(camera.nearClipPlane * 2, camera);
 
-	private void OnEnable()
+	// Private
+	private void ApplyRecoil()
+		=> Inventory.transform.localRotation *= Quaternion.Euler(-attributes.Recoil, 0f, 0f);
+	private void RecoverFromRecoil()
+		=> Inventory.transform.localRotation = Quaternion.Lerp(Inventory.transform.localRotation, Quaternion.identity, 3f * Time.deltaTime);
+
+	// Mono
+	protected void OnEnable()
 	{
 		crosshair.UpdatePosition(this, Camera.main, true);
 	}
-	private void Update()
+	protected void Update()
 	{
 		RecoverFromRecoil();
 		crosshair.UpdatePosition(this, Camera.main);
