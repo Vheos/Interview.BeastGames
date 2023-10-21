@@ -25,6 +25,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3640529845531224817, guid: 21e7bb6584ecb224fac230e8a3933530, type: 3}
+      propertyPath: maxHealth
+      value: 35
+      objectReference: {fileID: 0}
+    - target: {fileID: 3640529845531224817, guid: 21e7bb6584ecb224fac230e8a3933530, type: 3}
       propertyPath: hitParticlePrefab
       value: 
       objectReference: {fileID: 3208647015663171964, guid: 846ae782bfd9a4843997b63615b3a804, type: 3}

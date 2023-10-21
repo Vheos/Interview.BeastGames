@@ -17,6 +17,10 @@ PrefabInstance:
       value: Bush
       objectReference: {fileID: 0}
     - target: {fileID: 3640529845531224817, guid: 21e7bb6584ecb224fac230e8a3933530, type: 3}
+      propertyPath: maxHealth
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 3640529845531224817, guid: 21e7bb6584ecb224fac230e8a3933530, type: 3}
       propertyPath: hitParticlePrefab
       value: 
       objectReference: {fileID: 3208647015663171964, guid: e33e86ddf5f86e241beb103561dcd847, type: 3}
