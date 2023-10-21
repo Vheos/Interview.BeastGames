@@ -17,13 +17,13 @@ public class Gun : MonoBehaviour
 	{ get; set; }
 	public bool TryShoot()
 	{
-		muzzleParticle.Play();
-		ApplyRecoil();
-
 		OnShoot.Invoke(new(this));
 
 		for (int i = 0; i < attributes.BulletCount; i++)
 			Bullet.Spawn(attributes.BulletPrefab, this);
+
+		muzzleParticle.Play();
+		ApplyRecoil();
 
 		return true;
 	}

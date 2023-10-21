@@ -130,7 +130,7 @@ PrefabInstance:
     - target: {fileID: 1242604820513720009, guid: c2c5ff8bdebe4964f87d0ec481e87c2e, type: 3}
       propertyPath: OnSpawn.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
-      objectReference: {fileID: 11400000, guid: 3cbacb12d5d981e49b91dbcff638541d, type: 2}
+      objectReference: {fileID: 3760045308040085337}
     - target: {fileID: 1242604820513720009, guid: c2c5ff8bdebe4964f87d0ec481e87c2e, type: 3}
       propertyPath: OnDespawn.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
@@ -153,7 +153,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1242604820513720009, guid: c2c5ff8bdebe4964f87d0ec481e87c2e, type: 3}
       propertyPath: OnSpawn.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
-      value: CommonBulletBehaviour, Vheos.Interview.BeastGames
+      value: GrenadeBehaviour, Vheos.Interview.BeastGames
       objectReference: {fileID: 0}
     - target: {fileID: 1242604820513720009, guid: c2c5ff8bdebe4964f87d0ec481e87c2e, type: 3}
       propertyPath: OnDespawn.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
@@ -207,6 +207,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2607355204527502107, guid: c2c5ff8bdebe4964f87d0ec481e87c2e, type: 3}
+      propertyPath: m_Time
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2607355204527502107, guid: c2c5ff8bdebe4964f87d0ec481e87c2e, type: 3}
+      propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[0].time
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2607355204527502107, guid: c2c5ff8bdebe4964f87d0ec481e87c2e, type: 3}
+      propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[0].value
+      value: 0.15263164
+      objectReference: {fileID: 0}
     - target: {fileID: 3808825647656198678, guid: c2c5ff8bdebe4964f87d0ec481e87c2e, type: 3}
       propertyPath: m_Mass
       value: 5
@@ -259,9 +271,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e343064bc83462408b69088455cf95c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  explosionParticlePrefab: {fileID: 4748244757920262462, guid: bec155a1979cdaf4893fa9be7820a9d7, type: 3}
   explosionRadius: 5
   maxHits: 5
-  explosionParticlePrefab: {fileID: 4748244757920262462, guid: bec155a1979cdaf4893fa9be7820a9d7, type: 3}
 --- !u!1001 &8259016583401112393
 PrefabInstance:
   m_ObjectHideFlags: 0
