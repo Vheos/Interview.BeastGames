@@ -62,6 +62,15 @@ public partial class @FPSActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Jump"",
+                    ""type"": ""Button"",
+                    ""id"": ""160c1f5f-62ac-494e-b0de-ad8bfa9037ae"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -240,6 +249,28 @@ public partial class @FPSActions: IInputActionCollection2, IDisposable
                     ""action"": ""SwitchGun"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""1e83ac83-7591-4d94-a006-8aa20cac3e39"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""KeyboardMouse"",
+                    ""action"": ""Jump"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""5aeb813d-867e-44e4-939f-0a49f4624edf"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Jump"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -300,6 +331,7 @@ public partial class @FPSActions: IInputActionCollection2, IDisposable
         m_Player_Look = m_Player.FindAction("Look", throwIfNotFound: true);
         m_Player_ShootGun = m_Player.FindAction("ShootGun", throwIfNotFound: true);
         m_Player_SwitchGun = m_Player.FindAction("SwitchGun", throwIfNotFound: true);
+        m_Player_Jump = m_Player.FindAction("Jump", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -365,6 +397,7 @@ public partial class @FPSActions: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Look;
     private readonly InputAction m_Player_ShootGun;
     private readonly InputAction m_Player_SwitchGun;
+    private readonly InputAction m_Player_Jump;
     public struct PlayerActions
     {
         private @FPSActions m_Wrapper;
@@ -373,6 +406,7 @@ public partial class @FPSActions: IInputActionCollection2, IDisposable
         public InputAction @Look => m_Wrapper.m_Player_Look;
         public InputAction @ShootGun => m_Wrapper.m_Player_ShootGun;
         public InputAction @SwitchGun => m_Wrapper.m_Player_SwitchGun;
+        public InputAction @Jump => m_Wrapper.m_Player_Jump;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -394,6 +428,9 @@ public partial class @FPSActions: IInputActionCollection2, IDisposable
             @SwitchGun.started += instance.OnSwitchGun;
             @SwitchGun.performed += instance.OnSwitchGun;
             @SwitchGun.canceled += instance.OnSwitchGun;
+            @Jump.started += instance.OnJump;
+            @Jump.performed += instance.OnJump;
+            @Jump.canceled += instance.OnJump;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -410,6 +447,9 @@ public partial class @FPSActions: IInputActionCollection2, IDisposable
             @SwitchGun.started -= instance.OnSwitchGun;
             @SwitchGun.performed -= instance.OnSwitchGun;
             @SwitchGun.canceled -= instance.OnSwitchGun;
+            @Jump.started -= instance.OnJump;
+            @Jump.performed -= instance.OnJump;
+            @Jump.canceled -= instance.OnJump;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -469,5 +509,6 @@ public partial class @FPSActions: IInputActionCollection2, IDisposable
         void OnLook(InputAction.CallbackContext context);
         void OnShootGun(InputAction.CallbackContext context);
         void OnSwitchGun(InputAction.CallbackContext context);
+        void OnJump(InputAction.CallbackContext context);
     }
 }
