@@ -12,9 +12,11 @@ internal class PlayerController : MonoBehaviour
 	[Header("Move")]
 	[SerializeField, Range(1f, 10f)] private float maxMoveSpeed = 5f;
 	[SerializeField, Range(0.1f, 1f)] private float moveAcceleration = 0.5f;
+	[Header("Jump")]
+	[SerializeField, Range(2f, 20f)] private float jumpHeight = 10f;
 	[Header("Fall")]
 	[SerializeField, Range(10f, 100f)] private float maxFallSpeed = 50f;
-	[SerializeField, Range(0.1f, 1f)] private float fallAcceleration = 0.5f;
+	[SerializeField, Range(0f, 1f)] private float fallAcceleration = 0.5f;
 	[Header("Look")]
 	[SerializeField] private Vector2 lookSpeed = new(+5f, -4f);
 	[SerializeField, Range(60f, 90f)] private float maxPitch = 60f;
@@ -23,6 +25,7 @@ internal class PlayerController : MonoBehaviour
 	private FPSActions.PlayerActions actions;
 	private Vector2 moveInput;
 	private Vector2 lookInput;
+	private bool jumpInput;
 
 	// Public
 	public bool InvertedY
@@ -50,15 +53,12 @@ internal class PlayerController : MonoBehaviour
 			return transform.rotation * inputDirection;
 		}
 	}
+	private float JumpSpeed
+	{ get; set; }
+	private Vector3 JumpDirection
+		=> Vector3.up;
 	private float FallSpeed
-	{
-		get
-		{
-			float currentSpeed = Mathf.Abs(characterController.velocity.y);
-			float acceleration = fallAcceleration;
-			return Mathf.Min(currentSpeed + acceleration, maxFallSpeed);
-		}
-	}
+	{ get; set; }
 	private Vector3 FallDirection
 		=> Vector3.down;
 	private float LookYaw
@@ -79,9 +79,23 @@ internal class PlayerController : MonoBehaviour
 			return Helpers.ClampAngle(currentAngle + offsetAngle, -maxPitch, +maxPitch);
 		}
 	}
+	private void UpdateJumpSpeed()
+	{
+		if (characterController.isGrounded)
+			JumpSpeed = jumpInput ? jumpHeight : 0f;
+
+		ResetJumpInput();
+	}
+	private void UpdateFallSpeed()
+	{
+		if (characterController.isGrounded)
+			FallSpeed = 0f;
+
+		FallSpeed = Mathf.Min(FallSpeed + fallAcceleration, maxFallSpeed);
+	}
 	private void Move()
 	{
-		Vector3 motion = MoveSpeed * MoveDirection + FallSpeed * FallDirection;
+		Vector3 motion = MoveSpeed * MoveDirection + JumpSpeed * JumpDirection + FallSpeed * FallDirection;
 		characterController.Move(motion * Time.deltaTime);
 	}
 	private void Look()
@@ -95,11 +109,16 @@ internal class PlayerController : MonoBehaviour
 	private void OnSwitchGun(ActionContext context)
 		=> gunInventory.TrySwitchToNext();
 
+
 	// Input reading
 	private void SetMoveInput(ActionContext context)
 		=> moveInput = context.ReadValue<Vector2>();
-	private void ResetMoveInput(ActionContext context)
+	private void ResetMoveInput(ActionContext _)
 		=> moveInput = default;
+	private void SetJumpInput(ActionContext _)
+		=> jumpInput = true;
+	private void ResetJumpInput()
+		=> jumpInput = false;
 	private void AccumulateLookInput(ActionContext context)
 		=> lookInput += context.ReadValue<Vector2>();
 	private void ResetLookInput()
@@ -114,6 +133,7 @@ internal class PlayerController : MonoBehaviour
 	{
 		actions.Move.performed += SetMoveInput;
 		actions.Move.canceled += ResetMoveInput;
+		actions.Jump.performed += SetJumpInput;
 		actions.Look.performed += AccumulateLookInput;
 		actions.ShootGun.performed += OnShootGun;
 		actions.SwitchGun.performed += OnSwitchGun;
@@ -123,6 +143,7 @@ internal class PlayerController : MonoBehaviour
 	{
 		actions.Move.performed -= SetMoveInput;
 		actions.Move.canceled -= ResetMoveInput;
+		actions.Jump.performed -= SetJumpInput;
 		actions.Look.performed -= AccumulateLookInput;
 		actions.ShootGun.performed -= OnShootGun;
 		actions.SwitchGun.performed -= OnSwitchGun;
@@ -131,6 +152,8 @@ internal class PlayerController : MonoBehaviour
 	protected void Update()
 	{
 		Look();
+		UpdateJumpSpeed();
+		UpdateFallSpeed();
 		Move();
 	}
 }
