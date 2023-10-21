@@ -609,6 +609,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Shotgun
       objectReference: {fileID: 0}
+    - target: {fileID: 7721009874773928073, guid: 96b7ea89b096f574fabfb10a35da8887, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -901,6 +905,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Crossbow
       objectReference: {fileID: 0}
+    - target: {fileID: 7721009874773928073, guid: 745ba7af14b1f3345a0db65fbcdb1831, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1128,6 +1136,10 @@ PrefabInstance:
     - target: {fileID: 7721009874773928073, guid: 45e559b0a08f8e54fab171f830157823, type: 3}
       propertyPath: m_Name
       value: GrenadeLauncher
+      objectReference: {fileID: 0}
+    - target: {fileID: 7721009874773928073, guid: 45e559b0a08f8e54fab171f830157823, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2347,10 +2359,10 @@ PrefabInstance:
       addedObject: {fileID: 191265525}
     - targetCorrespondingSourceObject: {fileID: 3038374177400043368, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 855461264}
+      addedObject: {fileID: 2038865961}
     - targetCorrespondingSourceObject: {fileID: 3038374177400043368, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 2038865961}
+      addedObject: {fileID: 855461264}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
 --- !u!1 &2114283754330233424
