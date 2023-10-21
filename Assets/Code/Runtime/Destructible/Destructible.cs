@@ -7,22 +7,18 @@ public class Destructible : MonoBehaviour
 	[Header(Headers.Dependencies)]
 	[SerializeField] private DestructibleAttributes attributes;
 	[SerializeField] private new Collider collider;
-
 	[Header(Headers.Events)]
 	[SerializeField] private OnGetHit.Event onGetHit;
 	[SerializeField] private OnChangeHealth.Event onChangeHealth;
 	[SerializeField] private OnDespawnDestructible.Event onDespawn;
 
-	public DestructibleAttributes Attributes
-		=> attributes;
-
+	// Fields
+	private float health;
 	private float recentDamage;
-
 	private Tween damageTween;
 	private Tween despawnTween;
-	public bool IsDespawning
-		=> despawnTween != null;
-	private float health;
+
+	// Public
 	public float Health
 	{
 		get => health;
@@ -39,7 +35,26 @@ public class Destructible : MonoBehaviour
 			HandleDamage(previous - health);
 		}
 	}
+	public DestructibleAttributes Attributes
+		=> attributes;
+	public bool IsDespawning
+		=> despawnTween != null;
+	public void GetHit(OnHit.Data hitData)
+	{
+		onGetHit.Invoke(new(this, hitData));
+		if (hitData.Bullet.Attributes.DealDamageOnCollision || !hitData.IsCollision)
+			Health -= hitData.Bullet.Gun.GetDamageDealtTo(this);
+	}
+	public void Despawn()
+	{
+		collider.enabled = false;
+		transform.DOKill(true);
+		despawnTween = transform.DOScale(Vector3.zero, 1f);
+		despawnTween.onComplete += DestroySelf;
+		onDespawn.Invoke(new(this));
+	}
 
+	// Private
 	private void HandleDamage(float damage)
 	{
 		if (damage <= 0)
@@ -58,31 +73,15 @@ public class Destructible : MonoBehaviour
 		damageTween?.Kill(true);
 		damageTween = transform.DOShakeScale(duration, strength);
 	}
-
-	public void GetHit(OnHit.Data hitData)
-	{
-		onGetHit.Invoke(new(this, hitData));
-		if (hitData.Bullet.Attributes.DealDamageOnCollision || !hitData.IsCollision)
-			Health -= hitData.Bullet.Gun.GetDamageDealtTo(this);
-	}
-	public void Despawn()
-	{
-		collider.enabled = false;
-		transform.DOKill(true);
-		despawnTween = transform.DOScale(Vector3.zero, 1f);
-		despawnTween.onComplete += DestroySelf;
-		onDespawn.Invoke(new(this));
-	}
-
 	private void DestroySelf()
 		=> Destroy(gameObject);
 
-
-	private void Awake()
+	// Mono
+	protected void Awake()
 	{
 		health = attributes.MaxHealth;
 	}
-	private void Update()
+	protected void Update()
 	{
 		if (recentDamage > 0f)
 		{

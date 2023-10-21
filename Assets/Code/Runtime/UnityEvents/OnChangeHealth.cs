@@ -16,9 +16,9 @@ public static class OnChangeHealth
 		public readonly float To;
 
 
-		public Data(Destructible destructible, float from, float to)
+		public Data(Destructible invoker, float from, float to)
 		{
-			Destructible = destructible;
+			Destructible = invoker;
 			From = from;
 			To = to;
 		}

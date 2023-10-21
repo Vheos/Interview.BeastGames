@@ -16,6 +16,7 @@ public class GunAttributes : MonoBehaviour
 	[SerializeField] private DamageModifier[] damageModifiers;
 	[SerializeField, Range(0f, 1f)] private float fallbackDamageModifier = 1f;
 
+	// Public
 	public Bullet BulletPrefab
 		=> bulletPrefab;
 	public float BaseDamage

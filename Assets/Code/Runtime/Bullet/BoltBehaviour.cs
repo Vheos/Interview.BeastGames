@@ -3,15 +3,19 @@ using UnityEngine;
 
 public class BoltBehaviour : MonoBehaviour
 {
+	// Inspector
+	[Header(Headers.Values)]
 	[SerializeField, Range(1f, 100f)] private float maxDistance = 50f;
 
+	// Fields
 	private Transform hitAnchor;
 
+	// Delegates
 	public void Raycast(OnSpawnBullet.Data data)
 	{
 		Ray ray = new(data.Bullet.transform.position, data.Bullet.transform.forward);
 
-		data.Bullet.Trail.UnparentAndFade();
+		data.Bullet.Trail.Despawn();
 		data.Bullet.Trail.transform.DOMove(ray.GetPoint(maxDistance / 10f), data.Bullet.Trail.FadeDuration);
 
 		if (!Physics.Raycast(ray, out var hitInfo, maxDistance))

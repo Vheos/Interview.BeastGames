@@ -13,9 +13,9 @@ public static class OnShoot
 	{
 		public readonly Gun Gun;
 
-		public Data(Gun gun)
+		public Data(Gun invoker)
 		{
-			Gun = gun;
+			Gun = invoker;
 		}
 	}
 }

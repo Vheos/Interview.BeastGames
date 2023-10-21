@@ -2,16 +2,20 @@ using UnityEngine;
 
 public class GrenadeBehaviour : MonoBehaviour
 {
+	// Inspector
+	[Header(Headers.Prefabs)]
+	[SerializeField] private ParticleSystem explosionParticlePrefab;
+	[Header(Headers.Values)]
 	[SerializeField, Range(0f, 10)] private float explosionRadius = 5f;
 	[SerializeField, Range(1, 50)] private int maxHits = 5;
-	[SerializeField] private ParticleSystem explosionParticlePrefab;
 
+	// Fields
 	private Collider[] colliderHits;
 	private RaycastHit[] raycastHits;
 
+	// Delegates
 	public void RandomizeRotation(OnSpawnBullet.Data data)
 		=> data.Bullet.transform.rotation = Random.rotation;
-
 	public void Explode(OnDespawnBullet.Data data)
 	{
 		Vector3 bulletPosition = data.Bullet.transform.position;
@@ -32,7 +36,8 @@ public class GrenadeBehaviour : MonoBehaviour
 			Instantiate(explosionParticlePrefab, bulletPosition, Quaternion.identity);
 	}
 
-	private void Awake()
+	// Mono
+	protected void Awake()
 	{
 		colliderHits = new Collider[maxHits];
 		raycastHits = new RaycastHit[maxHits];

@@ -44,6 +44,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: GunCamera
       objectReference: {fileID: 0}
+    - target: {fileID: 8186253103939946669, guid: d517c1b1334b2ca4db7ff3e05216fea3, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

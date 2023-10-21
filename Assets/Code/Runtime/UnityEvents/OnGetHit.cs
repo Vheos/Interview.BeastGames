@@ -17,9 +17,9 @@ public static class OnGetHit
 		public Bullet Bullet
 			=> HitData.Bullet;
 
-		public Data(Destructible destructible, OnHit.Data hitData)
+		public Data(Destructible invoker, OnHit.Data hitData)
 		{
-			Destructible = destructible;
+			Destructible = invoker;
 			HitData = hitData;
 		}
 	}

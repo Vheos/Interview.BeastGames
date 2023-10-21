@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: -279638353600922151}
   - component: {fileID: 3808825647656198678}
   m_Layer: 8
-  m_Name: CommonBullet
+  m_Name: ABullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -107,11 +107,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be58e9f0dc02b954280ca6646ff751eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hitParticlePrefab: {fileID: 1336772516950494864, guid: b25540b39113be044bb71be4b5793c75, type: 3}
   force: 10
   maxTime: 3
   maxHits: 1
   dealDamageOnCollision: 1
-  hitParticlePrefab: {fileID: 1336772516950494864, guid: b25540b39113be044bb71be4b5793c75, type: 3}
   spawnHitDecal: 1
 --- !u!54 &3808825647656198678
 Rigidbody:

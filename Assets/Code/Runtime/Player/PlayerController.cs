@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.InputSystem;
 using ActionContext = UnityEngine.InputSystem.InputAction.CallbackContext;
 
 
@@ -11,44 +10,28 @@ internal class PlayerController : MonoBehaviour
 	[SerializeField] private Transform cameraAnchor;
 	[SerializeField] private GunInventory gunInventory;
 	[Header("Move")]
-	[SerializeField] private float maxMoveSpeed = 5f;
-	[SerializeField] private float moveAcceleration = 0.5f;
+	[SerializeField, Range(1f, 10f)] private float maxMoveSpeed = 5f;
+	[SerializeField, Range(0.1f, 1f)] private float moveAcceleration = 0.5f;
 	[Header("Fall")]
-	[SerializeField] private float maxFallSpeed = 50f;
-	[SerializeField] private float fallAcceleration = 0.5f;
+	[SerializeField, Range(10f, 100f)] private float maxFallSpeed = 50f;
+	[SerializeField, Range(0.1f, 1f)] private float fallAcceleration = 0.5f;
 	[Header("Look")]
 	[SerializeField] private Vector2 lookSpeed = new(+5f, -4f);
-	[SerializeField] private float maxPitch = 60f;
+	[SerializeField, Range(60f, 90f)] private float maxPitch = 60f;
 
 	// Fields
 	private FPSActions.PlayerActions actions;
 	private Vector2 moveInput;
 	private Vector2 lookInput;
 
-	// Input
-	private void SetMoveInput(ActionContext context)
-		=> moveInput = context.ReadValue<Vector2>();
-	private void ResetMoveInput(ActionContext context)
-		=> moveInput = default;
-	private void AccumulateLookInput(ActionContext context)
-		=> lookInput += context.ReadValue<Vector2>();
-	private void ResetLookInput()
-		=> lookInput = default;
-	private void DebugInput()
+	// Public
+	public bool InvertedY
 	{
-		if (Keyboard.current.escapeKey.wasPressedThisFrame)
-			Application.Quit();
-
-		if (Keyboard.current.iKey.wasPressedThisFrame)
-			lookSpeed.y *= -1f;
+		get => lookSpeed.y < 0f;
+		set => lookSpeed.y = Mathf.Abs(lookSpeed.y) * (value ? -1f : +1f);
 	}
 
-	// Move & Fall
-	private void Move()
-	{
-		Vector3 motion = MoveSpeed * MoveDirection + FallSpeed * FallDirection;
-		characterController.Move(motion * Time.deltaTime);
-	}
+	// Private
 	private float MoveSpeed
 	{
 		get
@@ -78,14 +61,6 @@ internal class PlayerController : MonoBehaviour
 	}
 	private Vector3 FallDirection
 		=> Vector3.down;
-
-	// Look
-	private void Look()
-	{
-		transform.localRotation = Quaternion.Euler(0f, LookYaw, 0f);
-		cameraAnchor.localRotation = Quaternion.Euler(LookPitch, 0f, 0f);
-		ResetLookInput();
-	}
 	private float LookYaw
 	{
 		get
@@ -104,23 +79,38 @@ internal class PlayerController : MonoBehaviour
 			return Helpers.ClampAngle(currentAngle + offsetAngle, -maxPitch, +maxPitch);
 		}
 	}
-
-
+	private void Move()
+	{
+		Vector3 motion = MoveSpeed * MoveDirection + FallSpeed * FallDirection;
+		characterController.Move(motion * Time.deltaTime);
+	}
+	private void Look()
+	{
+		transform.localRotation = Quaternion.Euler(0f, LookYaw, 0f);
+		cameraAnchor.localRotation = Quaternion.Euler(LookPitch, 0f, 0f);
+		ResetLookInput();
+	}
 	private void OnShootGun(ActionContext context)
-	{
-		gunInventory.TryShoot();
-	}
+		=> gunInventory.TryShoot();
 	private void OnSwitchGun(ActionContext context)
-	{
-		gunInventory.TrySwitchToNext();
-	}
+		=> gunInventory.TrySwitchToNext();
 
-	private void Awake()
+	// Input reading
+	private void SetMoveInput(ActionContext context)
+		=> moveInput = context.ReadValue<Vector2>();
+	private void ResetMoveInput(ActionContext context)
+		=> moveInput = default;
+	private void AccumulateLookInput(ActionContext context)
+		=> lookInput += context.ReadValue<Vector2>();
+	private void ResetLookInput()
+		=> lookInput = default;
+
+	// Mono
+	protected void Awake()
 	{
 		actions = new FPSActions().Player;
 	}
-
-	private void OnEnable()
+	protected void OnEnable()
 	{
 		actions.Move.performed += SetMoveInput;
 		actions.Move.canceled += ResetMoveInput;
@@ -129,8 +119,7 @@ internal class PlayerController : MonoBehaviour
 		actions.SwitchGun.performed += OnSwitchGun;
 		actions.Enable();
 	}
-
-	private void OnDisable()
+	protected void OnDisable()
 	{
 		actions.Move.performed -= SetMoveInput;
 		actions.Move.canceled -= ResetMoveInput;
@@ -139,10 +128,8 @@ internal class PlayerController : MonoBehaviour
 		actions.SwitchGun.performed -= OnSwitchGun;
 		actions.Disable();
 	}
-
-	private void Update()
+	protected void Update()
 	{
-		DebugInput();
 		Look();
 		Move();
 	}

@@ -13,9 +13,9 @@ public static class OnDespawnDestructible
 	{
 		public readonly Destructible Destructible;
 
-		public Data(Destructible destructible)
+		public Data(Destructible invoker)
 		{
-			Destructible = destructible;
+			Destructible = invoker;
 		}
 	}
 }
