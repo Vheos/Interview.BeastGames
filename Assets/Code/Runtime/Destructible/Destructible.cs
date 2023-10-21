@@ -48,7 +48,7 @@ public class Destructible : MonoBehaviour
 	public void Despawn()
 	{
 		collider.enabled = false;
-		transform.DOKill(true);
+		transform.DOKill();
 		despawnTween = transform.DOScale(Vector3.zero, 1f);
 		despawnTween.onComplete += DestroySelf;
 		onDespawn.Invoke(new(this));
@@ -83,7 +83,7 @@ public class Destructible : MonoBehaviour
 	}
 	protected void Update()
 	{
-		if (recentDamage > 0f)
+		if (recentDamage > 0f && !IsDespawning)
 		{
 			AnimateDamage(recentDamage);
 			recentDamage = 0f;

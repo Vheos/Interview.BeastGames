@@ -8,7 +8,8 @@ public class Crosshair : MonoBehaviour
 	[Header(Headers.Values)]
 	[SerializeField, Range(1f, 10f)] private float speed = 10f;
 	[SerializeField, Range(1f, 10f)] private float distance = 5f;
-	[SerializeField] private Color noTargetColor = Color.white.NewA(0.25f);
+	[SerializeField] private Color noTargetColor = Color.white.NewA(0.1f);
+	[SerializeField] private Color environemntTargetColor = Color.white.NewA(0.25f);
 	[SerializeField] private Gradient damageGradient;
 	[SerializeField] private LayerMask raycastMask;
 
@@ -25,8 +26,10 @@ public class Crosshair : MonoBehaviour
 			? raycastHit.point
 			: ray.GetPoint(maxDistance);
 
-		Color color = hitSomething && raycastHit.collider.TryGetDestructible(out var destructible)
-			? damageGradient.Evaluate(gun.GetDamageModifierFor(destructible))
+		Color color = hitSomething
+			? raycastHit.collider.TryGetDestructible(out var destructible)
+				? damageGradient.Evaluate(gun.GetDamageModifierFor(destructible))
+				: environemntTargetColor
 			: noTargetColor;
 
 		Vector3 worldPoint = point.RetainScreenPositionAtDistance(distance, camera);
