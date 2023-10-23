@@ -32,11 +32,11 @@
 - [x] Zniszczony obiekt powinien mieć możliwość podpięcia pod siebie dowolnych funkcji, które wywoływać się będą po jego zniszczeniu – np wywołanie particle effects, lub otworzenie drzwi, etc. Obiekt powinien móc przyjąć dowolne zachowanie bez konieczności dopisywaniakodu do jego klasy,
   > - zastosowałem ładnie opakowane UnityEvents. Z dostępem do Odina można by się pokusić o jeszcze prostszy/bardziej intuicyjny system
 - [x] Wszystkie elementy graficzne typu animacja, particle effects, etc. wpływaja korzystnie nazadanie testowe,
-  > testowa scena zaimportowana z szablonu Unity `First Person`, materiały podmienione na `Default-Material`
-  > zniszczalne obiekty posiadają animacje otrzymywania obrażeń oraz zniszczenia
-  > każdy rodzaj materiału obiektu wywołuje inny particle effect przy trafieniu
-  >   np. strzał w drzewo wyrzuca wióry, a w metal - iskry
-  > pociski zostawiają za sobą smugi (TrailRenderer)
+  > - testowa scena zaimportowana z szablonu Unity `First Person`, materiały podmienione na `Default-Material`
+  > - zniszczalne obiekty posiadają animacje otrzymywania obrażeń oraz zniszczenia
+  > - każdy rodzaj materiału obiektu wywołuje inny particle effect przy trafieniu  
+  >   (np. strzał w drzewo wyrzuca wióry, a w metal - iskry)
+  > - pociski zostawiają za sobą smugi (TrailRenderer)
 
   > Źródła assetów:
   > - broni: [First Person Lover - Weapons Pack](https://assetstore.unity.com/packages/3d/props/guns/first-person-lover-weapons-pack-39976)
